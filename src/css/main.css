@@ -276,3 +276,26 @@ fieldset {
 .footer .actions li a:hover img {
   opacity: 1;
 }
+/* ==========================================================================
+   _HEADER
+   ========================================================================== */
+.header {
+  padding: 20px 0;
+  background: #000;
+  position: absolute;
+  bottom: 111px;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+}
+.header .wrapper {
+  background: url("../img/temp/flowers.jpg") 98% 12px no-repeat;
+  background-size: 200px 60px;
+}
+.header .title {
+  margin: 0;
+  font: bold 56px / normal 'Poiret One', cursive;
+  position: relative;
+  left: 18px;
+  letter-spacing: .02em;
+}
