@@ -8,7 +8,6 @@
 // ==========================================================================
 @min-width: 320px;
 @md-width: 730px;
-@lg-width: 1000px;
 
 @xxs: ~"(min-width: 440px)";
 @xs: ~"(min-width: 568px)";
@@ -16,7 +15,10 @@
 @md: ~"(min-width: 970px)";
 @lg: ~"(min-width: 1280px)";
 
-@font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+@font-default: Helvetica, Arial, sans-serif;
+@font-poiret: 'Cinzel', serif;
+@font-poiret: 'Poiret One', cursive;
+@font-freestyle: 'Freestyle Script', cursive;
 
 @color-white: #fff;
 @color-font: #a3afb9;
@@ -42,6 +44,21 @@
   -webkit-backface-visibility: hidden;
 }
 /* ==========================================================================
+   _FONTS
+   ========================================================================== */
+/* Cinzel */
+@import url(https://fonts.googleapis.com/css?family=Cinzel);
+/* Poiret One */
+@import url(https://fonts.googleapis.com/css?family=Poiret+One);
+/* Freestyle Script */
+@font-face {
+  font-family: 'Freestyle Script';
+  src: url('../fonts/freestyle-script-webfont.eot');
+  src: local('☺'), url('../fonts/freestyle-script-webfont.woff') format('woff'), url('../fonts/freestyle-script-webfont.ttf') format('truetype'), url('../fonts/freestyle-script-webfont.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+/* ==========================================================================
    _GENERAL STYLES
    ========================================================================== */
 * {
@@ -53,7 +70,7 @@ html {
   height: 100%;
   padding: 0;
   margin: 0;
-  font: 14px/18px @font-family;
+  font: 14px/18px @font-default;
   color: @color-font;
   background: @color-black;
   -webkit-font-smoothing: antialiased;
