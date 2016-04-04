@@ -9,34 +9,14 @@
   box-sizing: border-box;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
-::selection {
-  color: #fff;
-  background-color: #d46f2c;
-}
-::-o-selection {
-  color: #fff;
-  background-color: #d46f2c;
-}
-::-ms-selection {
-  color: #fff;
-  background-color: #d46f2c;
-}
-::-moz-selection {
-  color: #fff;
-  background-color: #d46f2c;
-}
-::-webkit-selection {
-  color: #fff;
-  background-color: #d46f2c;
-}
 html {
   width: 100%;
   height: 100%;
   padding: 0;
   margin: 0;
   font: 14px/18px 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  color: #20201e;
-  background: #fff;
+  color: #a3afb9;
+  background: #000;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -46,7 +26,7 @@ body {
   height: 100%;
   min-height: 100%;
   margin: 0 auto;
-  background: #fff;
+  background: #000;
 }
 /* ==========================================================================
    _TEXT STYLES
@@ -58,7 +38,7 @@ p {
   outline: -webkit-focus-ring-color auto 0;
 }
 a {
-  color: #f26f19;
+  color: #e5eaef;
   outline: none;
   text-decoration: underline;
   transition: color 0.2s ease;
@@ -90,7 +70,7 @@ h6 {
   margin: 0;
   line-height: normal;
   font-weight: bold;
-  color: #20201e;
+  color: #a3afb9;
 }
 .h1,
 h1 {
