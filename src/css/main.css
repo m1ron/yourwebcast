@@ -29,7 +29,7 @@ html {
   height: 100%;
   padding: 0;
   margin: 0;
-  font: 14px/18px Helvetica, Arial, sans-serif;
+  font: 12px/14px Helvetica, Arial, sans-serif;
   color: #a3afb9;
   background: #000;
   -webkit-font-smoothing: antialiased;
@@ -38,16 +38,16 @@ html {
 body {
   width: 100%;
   min-width: 320px;
-  height: 100%;
   min-height: 100%;
   margin: 0 auto;
   background: #000;
+  position: relative;
 }
 /* ==========================================================================
    _TEXT STYLES
    ========================================================================== */
 p {
-  margin: 0 0 18px;
+  margin: 0 0 14px;
 }
 :focus {
   outline: -webkit-focus-ring-color auto 0;
@@ -84,46 +84,45 @@ h5,
 h6 {
   margin: 0;
   line-height: normal;
-  font-weight: bold;
+  font-weight: normal;
   color: #a3afb9;
+  font-family: 'Freestyle Script', cursive;
 }
 .h1,
 h1 {
-  margin: 18px 0 18px;
-  font-size: 30px;
+  margin: 14px 0 14px;
+  font-size: 32px;
   font-style: normal;
 }
 .h2,
 h2 {
-  margin: 18px 0 18px;
-  font-size: 24px;
+  margin: 14px 0 14px;
+  font-size: 28px;
   font-style: normal;
 }
 .h3,
 h3 {
-  margin: 18px 0 18px;
-  font-size: 24px;
+  margin: 14px 0 14px;
+  font-size: 26px;
   font-style: normal;
 }
 .h4,
 h4 {
-  margin: 18px 0 18px;
-  font-size: 18px;
+  margin: 14px 0 14px;
+  font-size: 24px;
   font-style: normal;
 }
 .h5,
 h5 {
-  margin: 18px 0 18px;
-  font-size: 16px;
+  margin: 14px 0 14px;
+  font-size: 22px;
   font-style: normal;
 }
 .h6,
 h6 {
-  margin: 18px 0 18px;
-  font-size: 14px;
-  line-height: 18px;
+  margin: 14px 0 14px;
+  font-size: 20px;
   font-style: normal;
-  text-transform: uppercase;
 }
 @media (min-width: 750px) {
   .h1,
@@ -136,15 +135,15 @@ h6 {
   }
   .h3,
   h3 {
-    font-size: 30px;
+    font-size: 32px;
   }
   .h4,
   h4 {
-    font-size: 24px;
+    font-size: 28px;
   }
   .h5,
   h5 {
-    font-size: 20px;
+    font-size: 24px;
   }
 }
 /* ==========================================================================
@@ -166,7 +165,7 @@ h6 {
 /* Wrapper */
 .wrapper {
   width: 100%;
-  max-width: 730px;
+  max-width: 1054px;
   padding: 0 15px;
   margin: 0 auto;
 }
@@ -175,6 +174,9 @@ h6 {
   content: '\0020';
   clear: both;
 }
+.main {
+  padding: 40px 0 226px;
+}
 /* ==========================================================================
    _FORMS
    ========================================================================== */
@@ -182,4 +184,95 @@ fieldset {
   padding: 0;
   border: 0;
   margin: 0;
+}
+/* ==========================================================================
+   _FOOTER
+   ========================================================================== */
+.footer {
+  height: 113px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.footer .wrapper {
+  height: 100%;
+  position: relative;
+}
+.footer .wrapper:before {
+  display: block;
+  content: '\0020';
+  overflow: hidden;
+  height: 3px;
+  margin: 0 auto;
+  background: rgba(163, 175, 185, 0.23);
+  position: absolute;
+  top: 0;
+  left: 15px;
+  right: 15px;
+}
+.footer .slogan {
+  margin-bottom: 0;
+  font: 30px / normal 'Freestyle Script', cursive;
+  position: absolute;
+  top: 16px;
+  left: 38px;
+}
+.footer .copyright {
+  margin: 0;
+  font-size: 11px;
+  letter-spacing: .012em;
+  position: absolute;
+  top: 64px;
+  left: 38px;
+}
+.footer .actions {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  position: absolute;
+  right: 26px;
+  top: 66px;
+}
+.footer .actions li {
+  margin: 0 9px;
+  display: inline-block;
+  vertical-align: middle;
+}
+.footer .actions li a {
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+.footer .actions li a:before {
+  display: block;
+  content: '\0020';
+  overflow: hidden;
+  width: 0;
+  height: 0;
+  margin: auto auto;
+  opacity: 0;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 28px 8px #fff;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  transition: opacity 0.2s ease;
+  z-index: -1;
+}
+.footer .actions li a img {
+  width: 19px;
+  height: 15px;
+  display: block;
+  opacity: .53;
+  transition: opacity 0.2s ease;
+}
+.footer .actions li a:hover:before {
+  opacity: 1;
+}
+.footer .actions li a:hover img {
+  opacity: 1;
 }

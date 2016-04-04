@@ -8,6 +8,7 @@
 // ==========================================================================
 @min-width: 320px;
 @md-width: 730px;
+@lg-width: 1054px;
 
 @xxs: ~"(min-width: 440px)";
 @xs: ~"(min-width: 568px)";
@@ -16,7 +17,7 @@
 @lg: ~"(min-width: 1280px)";
 
 @font-default: Helvetica, Arial, sans-serif;
-@font-poiret: 'Cinzel', serif;
+@font-cinzel: 'Cinzel', serif;
 @font-poiret: 'Poiret One', cursive;
 @font-freestyle: 'Freestyle Script', cursive;
 
@@ -24,6 +25,8 @@
 @color-font: #a3afb9;
 @color-black: #000;
 @color-gray-light: #e5eaef;
+@color-silver: #565f67;
+@color-blue-dark: #28343d;
 
 @duration: .2s ease;
 
@@ -34,6 +37,7 @@
 // COLORS
 .color-white(@opacity) { @color: rgba(255, 255, 255, @opacity); }
 .color-black(@opacity) { @color: rgba(0, 0, 0, @opacity); }
+.color-font(@opacity) { @color: rgba(163, 175, 185, @opacity); }
 // ROTATE
 .rotate(@deg) {
   -webkit-transform: rotate(@deg);
@@ -70,7 +74,7 @@ html {
   height: 100%;
   padding: 0;
   margin: 0;
-  font: 14px/18px @font-default;
+  font: 12px/14px @font-default;
   color: @color-font;
   background: @color-black;
   -webkit-font-smoothing: antialiased;
@@ -79,16 +83,16 @@ html {
 body {
   width: 100%;
   min-width: @min-width;
-  height: 100%;
   min-height: 100%;
   margin: 0 auto;
   background: @color-black;
+  position: relative;
 }
 /* ==========================================================================
    _TEXT STYLES
    ========================================================================== */
 p {
-  margin: 0 0 18px;
+  margin: 0 0 14px;
 }
 :focus { outline: -webkit-focus-ring-color auto 0; }
 a {
@@ -106,53 +110,52 @@ audio, canvas, img, video { vertical-align: middle; }
 .h-default {
   margin: 0;
   line-height: normal;
-  font-weight: bold;
+  font-weight: normal;
   color: @color-font;
+  font-family: @font-freestyle;
 }
 .h1 {
   &:extend(.h-default);
-  margin: 18px 0 18px;
-  font-size: 30px;
+  margin: 14px 0 14px;
+  font-size: 32px;
   font-style: normal;
 }
 .h2 {
   &:extend(.h-default);
-  margin: 18px 0 18px;
-  font-size: 24px;
+  margin: 14px 0 14px;
+  font-size: 28px;
   font-style: normal;
 }
 .h3 {
   &:extend(.h-default);
-  margin: 18px 0 18px;
-  font-size: 24px;
+  margin: 14px 0 14px;
+  font-size: 26px;
   font-style: normal;
 }
 .h4 {
   &:extend(.h-default);
-  margin: 18px 0 18px;
-  font-size: 18px;
+  margin: 14px 0 14px;
+  font-size: 24px;
   font-style: normal;
 }
 .h5 {
   &:extend(.h-default);
-  margin: 18px 0 18px;
-  font-size: 16px;
+  margin: 14px 0 14px;
+  font-size: 22px;
   font-style: normal;
 }
 .h6 {
   &:extend(.h-default);
-  margin: 18px 0 18px;
-  font-size: 14px;
-  line-height: 18px;
+  margin: 14px 0 14px;
+  font-size: 20px;
   font-style: normal;
-  text-transform: uppercase;
 }
 @media @sm {
   .h1 { font-size: 40px; }
   .h2 { font-size: 36px; }
-  .h3 { font-size: 30px; }
-  .h4 { font-size: 24px; }
-  .h5 { font-size: 20px; }
+  .h3 { font-size: 32px; }
+  .h4 { font-size: 28px; }
+  .h5 { font-size: 24px; }
 }
 h1 {&:extend(.h1); }
 h2 {&:extend(.h2); }
@@ -169,12 +172,110 @@ h6 {&:extend(.h6); }
 /* Wrapper */
 .wrapper {
   width: 100%;
-  max-width: @md-width;
+  max-width: @lg-width;
   padding: 0 15px;
   margin: 0 auto;
   &:after { .clearfix; }
+}
+.main {
+  padding: 40px 0 226px;
 }
 /* ==========================================================================
    _FORMS
    ========================================================================== */
 fieldset { padding: 0; border: 0; margin: 0; }
+/* ==========================================================================
+   _FOOTER
+   ========================================================================== */
+.footer {
+  height: 113px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  .wrapper {
+    height: 100%;
+    position: relative;
+
+    &:before {
+      .before;
+      height: 3px;
+      margin: 0 auto;
+      .color-font(.23);
+      background: @color;
+      position: absolute;
+      top: 0;
+      left: 15px;
+      right: 15px;
+    }
+  }
+
+  .slogan {
+    margin-bottom: 0;
+    font: 30px/normal @font-freestyle;
+    position: absolute;
+    top: 16px;
+    left: 38px;
+  }
+
+  .copyright {
+    margin: 0;
+    font-size: 11px;
+    letter-spacing: .012em;
+    position: absolute;
+    top: 64px;
+    left: 38px;
+  }
+
+  .actions {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    position: absolute;
+    right: 26px;
+    top: 66px;
+
+    li {
+      margin: 0 9px;
+      display: inline-block;
+      vertical-align: middle;
+      a {
+        display: block;
+        position: relative;
+        z-index: 1;
+
+        &:before {
+          .before;
+          width: 0;
+          height: 0;
+          margin: auto auto;
+          opacity: 0;
+          border-radius: 50%;
+          background: @color-white;
+          box-shadow: 0 0 28px 8px @color-white;
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          top: 0;
+          transition: opacity @duration;
+          z-index: -1;
+        }
+
+        img {
+          width: 19px;
+          height: 15px;
+          display: block;
+          opacity: .53;
+          transition: opacity @duration;
+        }
+
+        &:hover {
+          &:before { opacity: 1; }
+          img { opacity: 1; }
+        }
+      }
+    }
+  }
+}
