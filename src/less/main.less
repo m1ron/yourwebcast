@@ -116,37 +116,37 @@ audio, canvas, img, video { vertical-align: middle; }
 }
 .h1 {
   &:extend(.h-default);
-  margin: 0 0 8px 0;
+  margin: 8px 0;
   font-size: 32px;
   font-style: normal;
 }
 .h2 {
   &:extend(.h-default);
-  margin: 0 0 8px 0;
+  margin: 8px 0;
   font-size: 28px;
   font-style: normal;
 }
 .h3 {
   &:extend(.h-default);
-  margin: 0 0 8px 0;
+  margin: 8px 0;
   font-size: 26px;
   font-style: normal;
 }
 .h4 {
   &:extend(.h-default);
-  margin: 0 0 8px 0;
+  margin: 8px 0;
   font-size: 24px;
   font-style: normal;
 }
 .h5 {
   &:extend(.h-default);
-  margin: 0 0 8px 0;
+  margin: 8px 0;
   font-size: 22px;
   font-style: normal;
 }
 .h6 {
   &:extend(.h-default);
-  margin: 0 0 8px 0;
+  margin: 8px 0;
   font-size: 20px;
   font-style: normal;
 }
@@ -180,21 +180,23 @@ h6 {&:extend(.h6); }
 .main {
   padding: 40px 0 226px;
 }
-.content {
+.container {
   height: 460px;
   margin-left: 175px;
-  padding: 32px 46px;
+  padding: 24px 46px;
   border: 1px solid @color-white;
   box-shadow: 0 0 0 2px @color-silver;
   border-radius: 4px;
   overflow-y: scroll;
-  
-  .space { margin-right: 260px; }
-  .sidebar { width: 240px; float: right; }
+
+  .pure-g {
+    margin: 0 -10px;
+    [class *="pure-u"] { padding: 0 10px; }
+  }
 }
-.aside {
-  width: 164px;
-  float: left;
+.scroll {
+  height: 344px;
+  overflow-y: scroll;
 }
 figure {
   margin: 0;
@@ -211,6 +213,24 @@ figure {
    _FORMS
    ========================================================================== */
 fieldset { padding: 0; border: 0; margin: 0; }
+/* BUTTONS */
+.button, button, input[type="submit"] {
+  height: auto;
+  padding: 6px 22px;
+  font: 17px/18px @font-cinzel;
+  display: inline-block;
+  color: @color-white;
+  text-align: center;
+  text-decoration: none;
+  .color-white(.2);
+  background: @color-font;
+  box-shadow: inset 0 14px 0 0 @color;
+  border-radius: 4px;
+  border: 1px solid #c8cfd4;
+
+  &:hover, &:focus {
+  }
+}
 /* ==========================================================================
    _FOOTER
    ========================================================================== */
@@ -408,8 +428,9 @@ fieldset { padding: 0; border: 0; margin: 0; }
  _BACK
  ========================================================================== */
 .back {
-  width: 100%;
+  width: 164px;
   height: 460px;
+  float: left;
   display: block;
   background-position: 50% 0;
   background-repeat: no-repeat;
@@ -426,17 +447,25 @@ fieldset { padding: 0; border: 0; margin: 0; }
   overflow: hidden;
   transition: box-shadow @duration;
 
-  span {
-    padding: 27px 0 17px;
-    display: block;
-    .color-white(.2);
-    background: @color-font;
-    box-shadow: inset 0 40px 0 0 @color;
+  .bottom {
+    width: 100%;
+    height: 70px;
+    display: table;
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    transition: background @duration;
+
+    span {
+      padding: 0 4px;
+      display: table-cell;
+      vertical-align: middle;
+      .color-white(.2);
+      background: @color-font;
+      box-shadow: inset 0 40px 0 0 @color;
+
+      transition: background @duration;
+    }
   }
 
   &:hover {
@@ -448,11 +477,9 @@ fieldset { padding: 0; border: 0; margin: 0; }
    _NEWS-LIST
    ========================================================================== */
 .news-list {
-  height: 344px;
   margin: 0;
   padding: 0;
   list-style: none;
-  overflow-y: scroll;
 
   li {
     margin-bottom: 10px;
@@ -467,6 +494,5 @@ fieldset { padding: 0; border: 0; margin: 0; }
    _ARTICLE
    ========================================================================== */
 .article {
-  display: inline-block;
   &:after { .clearfix; }
 }
