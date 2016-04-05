@@ -74,7 +74,7 @@ html {
   height: 100%;
   padding: 0;
   margin: 0;
-  font: 12px/14px @font-default;
+  font: bold 12px/14px @font-default;
   color: @color-font;
   background: @color-black;
   -webkit-font-smoothing: antialiased;
@@ -116,37 +116,37 @@ audio, canvas, img, video { vertical-align: middle; }
 }
 .h1 {
   &:extend(.h-default);
-  margin: 14px 0 14px;
+  margin: 0 0 8px 0;
   font-size: 32px;
   font-style: normal;
 }
 .h2 {
   &:extend(.h-default);
-  margin: 14px 0 14px;
+  margin: 0 0 8px 0;
   font-size: 28px;
   font-style: normal;
 }
 .h3 {
   &:extend(.h-default);
-  margin: 14px 0 14px;
+  margin: 0 0 8px 0;
   font-size: 26px;
   font-style: normal;
 }
 .h4 {
   &:extend(.h-default);
-  margin: 14px 0 14px;
+  margin: 0 0 8px 0;
   font-size: 24px;
   font-style: normal;
 }
 .h5 {
   &:extend(.h-default);
-  margin: 14px 0 14px;
+  margin: 0 0 8px 0;
   font-size: 22px;
   font-style: normal;
 }
 .h6 {
   &:extend(.h-default);
-  margin: 14px 0 14px;
+  margin: 0 0 8px 0;
   font-size: 20px;
   font-style: normal;
 }
@@ -180,6 +180,33 @@ h6 {&:extend(.h6); }
 .main {
   padding: 40px 0 226px;
 }
+.content {
+  height: 460px;
+  margin-left: 175px;
+  padding: 32px 46px;
+  border: 1px solid @color-white;
+  box-shadow: 0 0 0 2px @color-silver;
+  border-radius: 4px;
+  overflow-y: scroll;
+  
+  .space { margin-right: 260px; }
+  .sidebar { width: 240px; float: right; }
+}
+.aside {
+  width: 164px;
+  float: left;
+}
+figure {
+  margin: 0;
+  border: 1px solid @color-white;
+  border-radius: 3px;
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+.push-left { margin: 0 16px 16px 0;float: left;}
 /* ==========================================================================
    _FORMS
    ========================================================================== */
@@ -319,7 +346,6 @@ fieldset { padding: 0; border: 0; margin: 0; }
       width: 16.66%;
       padding: 0 4px;
       float: left;
-      text-align: center;
 
       a {
         width: 100%;
@@ -332,6 +358,7 @@ fieldset { padding: 0; border: 0; margin: 0; }
         border: 1px solid @color-white;
         box-shadow: 0 0 0 2px @color-silver;
         border-radius: 4px;
+        text-align: center;
         text-decoration: none;
         position: relative;
         overflow: hidden;
@@ -376,4 +403,70 @@ fieldset { padding: 0; border: 0; margin: 0; }
       }
     }
   }
+}
+/* ==========================================================================
+ _BACK
+ ========================================================================== */
+.back {
+  width: 100%;
+  height: 460px;
+  display: block;
+  background-position: 50% 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: 1px solid @color-white;
+  box-shadow: 0 0 0 2px @color-silver;
+  border-radius: 4px;
+  text-align: center;
+  color: @color-white;
+  font: 20px/normal @font-cinzel;
+  text-transform: uppercase;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow @duration;
+
+  span {
+    padding: 27px 0 17px;
+    display: block;
+    .color-white(.2);
+    background: @color-font;
+    box-shadow: inset 0 40px 0 0 @color;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transition: background @duration;
+  }
+
+  &:hover {
+    box-shadow: 0 0 5px 2px @color-white;
+    span { background: @color-blue-dark; }
+  }
+}
+/* ==========================================================================
+   _NEWS-LIST
+   ========================================================================== */
+.news-list {
+  height: 344px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow-y: scroll;
+
+  li {
+    margin-bottom: 10px;
+
+    .h {
+      text-transform: uppercase;
+      margin-bottom: 0;
+    }
+  }
+}
+/* ==========================================================================
+   _ARTICLE
+   ========================================================================== */
+.article {
+  display: inline-block;
+  &:after { .clearfix; }
 }

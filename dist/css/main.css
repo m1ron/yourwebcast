@@ -29,7 +29,7 @@ html {
   height: 100%;
   padding: 0;
   margin: 0;
-  font: 12px/14px Helvetica, Arial, sans-serif;
+  font: bold 12px/14px Helvetica, Arial, sans-serif;
   color: #a3afb9;
   background: #000;
   -webkit-font-smoothing: antialiased;
@@ -90,37 +90,37 @@ h6 {
 }
 .h1,
 h1 {
-  margin: 14px 0 14px;
+  margin: 0 0 8px 0;
   font-size: 32px;
   font-style: normal;
 }
 .h2,
 h2 {
-  margin: 14px 0 14px;
+  margin: 0 0 8px 0;
   font-size: 28px;
   font-style: normal;
 }
 .h3,
 h3 {
-  margin: 14px 0 14px;
+  margin: 0 0 8px 0;
   font-size: 26px;
   font-style: normal;
 }
 .h4,
 h4 {
-  margin: 14px 0 14px;
+  margin: 0 0 8px 0;
   font-size: 24px;
   font-style: normal;
 }
 .h5,
 h5 {
-  margin: 14px 0 14px;
+  margin: 0 0 8px 0;
   font-size: 22px;
   font-style: normal;
 }
 .h6,
 h6 {
-  margin: 14px 0 14px;
+  margin: 0 0 8px 0;
   font-size: 20px;
   font-style: normal;
 }
@@ -176,6 +176,39 @@ h6 {
 }
 .main {
   padding: 40px 0 226px;
+}
+.content {
+  height: 460px;
+  margin-left: 175px;
+  padding: 32px 46px;
+  border: 1px solid #fff;
+  box-shadow: 0 0 0 2px #565f67;
+  border-radius: 4px;
+  overflow-y: scroll;
+}
+.content .space {
+  margin-right: 260px;
+}
+.content .sidebar {
+  width: 240px;
+  float: right;
+}
+.aside {
+  width: 164px;
+  float: left;
+}
+figure {
+  margin: 0;
+  border: 1px solid #fff;
+  border-radius: 3px;
+}
+figure img {
+  max-width: 100%;
+  height: auto;
+}
+.push-left {
+  margin: 0 16px 16px 0;
+  float: left;
 }
 /* ==========================================================================
    _FORMS
@@ -313,7 +346,6 @@ fieldset {
   width: 16.66%;
   padding: 0 4px;
   float: left;
-  text-align: center;
 }
 .nav ul li a {
   width: 100%;
@@ -326,6 +358,7 @@ fieldset {
   border: 1px solid #fff;
   box-shadow: 0 0 0 2px #565f67;
   border-radius: 4px;
+  text-align: center;
   text-decoration: none;
   position: relative;
   overflow: hidden;
@@ -365,4 +398,71 @@ fieldset {
 }
 .nav ul li:nth-child(6) a {
   background-image: url('../img/nav-6.jpg');
+}
+/* ==========================================================================
+ _BACK
+ ========================================================================== */
+.back {
+  width: 100%;
+  height: 460px;
+  display: block;
+  background-position: 50% 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: 1px solid #fff;
+  box-shadow: 0 0 0 2px #565f67;
+  border-radius: 4px;
+  text-align: center;
+  color: #fff;
+  font: 20px / normal 'Cinzel', serif;
+  text-transform: uppercase;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.2s ease;
+}
+.back span {
+  padding: 27px 0 17px;
+  display: block;
+  background: #a3afb9;
+  box-shadow: inset 0 40px 0 0 rgba(255, 255, 255, 0.2);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transition: background 0.2s ease;
+}
+.back:hover {
+  box-shadow: 0 0 5px 2px #fff;
+}
+.back:hover span {
+  background: #28343d;
+}
+/* ==========================================================================
+   _NEWS-LIST
+   ========================================================================== */
+.news-list {
+  height: 344px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow-y: scroll;
+}
+.news-list li {
+  margin-bottom: 10px;
+}
+.news-list li .h {
+  text-transform: uppercase;
+  margin-bottom: 0;
+}
+/* ==========================================================================
+   _ARTICLE
+   ========================================================================== */
+.article {
+  display: inline-block;
+}
+.article:after {
+  display: table;
+  content: '\0020';
+  clear: both;
 }
