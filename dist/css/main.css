@@ -29,7 +29,7 @@ html {
   height: 100%;
   padding: 0;
   margin: 0;
-  font: bold 12px/14px Helvetica, Arial, sans-serif;
+  font: 12px/14px Helvetica, Arial, sans-serif;
   color: #a3afb9;
   background: #000;
   -webkit-font-smoothing: antialiased;
@@ -200,14 +200,25 @@ figure {
   margin: 0;
   border: 1px solid #fff;
   border-radius: 3px;
+  display: inline-block;
 }
 figure img {
   max-width: 100%;
   height: auto;
 }
 .push-left {
-  margin: 0 16px 16px 0;
+  margin: 0 16px 10px 0;
   float: left;
+}
+/* PureCSS styles */
+.pure-g {
+  font-family: inherit;
+}
+.pure-g [class*="pure-u"] {
+  font-family: inherit;
+}
+.pure-menu-item:before {
+  display: none;
 }
 /* ==========================================================================
    _FORMS
@@ -232,6 +243,15 @@ input[type="submit"] {
   box-shadow: inset 0 14px 0 0 rgba(255, 255, 255, 0.2);
   border-radius: 4px;
   border: 1px solid #c8cfd4;
+  transition: background 0.2s ease;
+}
+.button:hover,
+button:hover,
+input[type="submit"]:hover,
+.button:focus,
+button:focus,
+input[type="submit"]:focus {
+  background: #28343d;
 }
 /* ==========================================================================
    _FOOTER
@@ -474,6 +494,7 @@ input[type="submit"] {
 .news-list li .h {
   text-transform: uppercase;
   margin-bottom: 0;
+  font-weight: bold;
 }
 /* ==========================================================================
    _ARTICLE
@@ -482,4 +503,30 @@ input[type="submit"] {
   display: table;
   content: '\0020';
   clear: both;
+}
+.article .title {
+  margin-bottom: 0;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+/* ==========================================================================
+   _CATALOG
+   ========================================================================== */
+.catalog .item {
+  margin-bottom: 18px;
+}
+.catalog .item:after {
+  display: table;
+  content: '\0020';
+  clear: both;
+}
+.catalog .item .image {
+  width: 142px;
+  margin-right: 24px;
+  float: left;
+}
+.catalog .item .h {
+  margin-bottom: 0;
+  text-transform: uppercase;
+  font-weight: bold;
 }
