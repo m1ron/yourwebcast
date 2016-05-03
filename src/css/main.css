@@ -44,9 +44,6 @@ body {
   background: #000;
   position: relative;
 }
-body.body-vertical-mobile {
-  height: auto;
-}
 @media (min-width: 1280px) {
   body {
     height: auto;
@@ -191,9 +188,6 @@ h6 {
 .main {
   padding: 20px 0 170px;
   height: 100%;
-}
-.body-vertical-mobile .main {
-  height: auto;
 }
 .main > .wrapper {
   height: 100%;
@@ -529,9 +523,6 @@ input[type="submit"]:focus {
   position: relative;
   overflow: hidden;
   transition: box-shadow 0.2s ease;
-}
-.body-vertical-mobile .nav ul li a {
-  height: 134px;
 }
 .nav ul li a span {
   padding: 15px 0 10px;
