@@ -44,7 +44,10 @@ body {
   background: #000;
   position: relative;
 }
-@media (min-width: 970px) {
+body.body-vertical-mobile {
+  height: auto;
+}
+@media (min-width: 1280px) {
   body {
     height: auto;
   }
@@ -189,6 +192,9 @@ h6 {
   padding: 20px 0 170px;
   height: 100%;
 }
+.body-vertical-mobile .main {
+  height: auto;
+}
 .main > .wrapper {
   height: 100%;
 }
@@ -199,10 +205,10 @@ h6 {
 }
 @media (min-width: 750px) {
   .main {
-    padding-bottom: 180px;
+    padding-bottom: 210px;
   }
 }
-@media (min-width: 970px) {
+@media (min-width: 1280px) {
   .main {
     height: auto;
     padding: 40px 0 226px;
@@ -431,7 +437,7 @@ input[type="submit"]:focus {
 }
 .header .wrapper {
   background: url("../img/temp/flowers.jpg") 98% 0 no-repeat;
-  background-size: 100px auto;
+  background-size: auto 75%;
 }
 .header .title {
   max-width: 60%;
@@ -445,12 +451,11 @@ input[type="submit"]:focus {
   .header {
     bottom: 70px;
   }
+  .header .wrapper {
+    background-size: auto 100%;
+  }
 }
 @media (min-width: 750px) {
-  .header .wrapper {
-    background-size: 200px 60px;
-    background-position: 98% 12px;
-  }
   .header .title {
     padding-right: 0;
     font-size: 36px;
@@ -461,12 +466,17 @@ input[type="submit"]:focus {
     bottom: 111px;
   }
   .header .title {
-    font-size: 56px;
+    max-width: none;
+    font-size: 45px;
   }
 }
 @media (min-width: 1280px) {
+  .header .wrapper {
+    background-size: 200px 60px;
+    background-position: 98% 12px;
+  }
   .header .title {
-    max-width: none;
+    font-size: 56px;
   }
 }
 /* ==========================================================================
@@ -487,6 +497,10 @@ input[type="submit"]:focus {
   display: table;
   content: '\0020';
   clear: both;
+}
+.body-vertical .nav ul {
+  max-width: 500px;
+  margin: 0 auto;
 }
 .nav ul li {
   width: 16.66%;
@@ -515,6 +529,9 @@ input[type="submit"]:focus {
   position: relative;
   overflow: hidden;
   transition: box-shadow 0.2s ease;
+}
+.body-vertical-mobile .nav ul li a {
+  height: 134px;
 }
 .nav ul li a span {
   padding: 15px 0 10px;
@@ -556,7 +573,7 @@ input[type="submit"]:focus {
     font-size: 14px;
   }
 }
-@media (min-width: 970px) {
+@media (min-width: 1280px) {
   .nav {
     height: auto;
   }

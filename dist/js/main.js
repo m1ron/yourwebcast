@@ -11,22 +11,26 @@ $(document).ready(function () {
 
 	$(window).on('resize', function () {
 		var _body = $('body');
-		if ($(window).width() <= 768) {
-			if(_body.height() >= 500){
+		if ($(window).width() <= 480) {
+			if(_body.height() >= 320){
+				_body.addClass('body-vertical body-vertical-mobile');
+			} else {
+				_body.removeClass('body-vertical body-vertical-mobile');
+			}
+		} else if ($(window).width() <= 768) {
+			if(_body.height() >= 450){
 				_body.addClass('body-vertical');
 			} else {
 				_body.removeClass('body-vertical');
 			}
-		}
-		if ($(window).width() <= 999) {
+		} else if ($(window).width() <= 999) {
 			if(_body.height() >= 940){
 				_body.addClass('body-vertical');
 			} else {
 				_body.removeClass('body-vertical');
 			}
-		}
-		else {
-			_body.removeClass('body-vertical');
+		} else {
+			_body.removeClass('body-vertical body-vertical-mobile');
 		}
 	}).trigger('resize');
 

@@ -89,7 +89,10 @@ body {
   margin: 0 auto;
   background: @color-black;
   position: relative;
-  @media @md {
+  &.body-vertical-mobile {
+    height: auto;
+  }
+  @media @lg {
     height: auto;
   }
 }
@@ -188,6 +191,9 @@ h6 {&:extend(.h6); }
 .main {
   padding: 20px 0 170px;
   height: 100%;
+  .body-vertical-mobile & {
+    height: auto;
+  }
   > .wrapper {
     height: 100%;
   }
@@ -195,9 +201,9 @@ h6 {&:extend(.h6); }
     padding-bottom: 130px;
   }
   @media @sm {
-    padding-bottom: 180px;
+    padding-bottom: 210px;
   }
-  @media @md {
+  @media @lg {
     height: auto;
     padding: 40px 0 226px;
     > .wrapper {
@@ -405,12 +411,10 @@ fieldset { padding: 0; border: 0; margin: 0; }
   left: 0;
   right: 0;
   overflow: hidden;
-
   .wrapper {
     background: url("../img/temp/flowers.jpg") 98% 0 no-repeat;
-    background-size: 100px auto;
+    background-size: auto 75%;
   }
-
   .title {
     max-width: 60%;
     margin: 0;
@@ -421,12 +425,11 @@ fieldset { padding: 0; border: 0; margin: 0; }
   }
   @media @xs {
     bottom: 70px;
+    .wrapper {
+      background-size: auto 100%;
+    }
   }
   @media @sm {
-    .wrapper {
-      background-size: 200px 60px;
-      background-position: 98% 12px;
-    }
     .title {
       padding-right: 0;
       font-size: 36px;
@@ -435,12 +438,17 @@ fieldset { padding: 0; border: 0; margin: 0; }
   @media @md {
     bottom: 111px;
     .title {
-      font-size: 56px;
+      max-width: none;
+      font-size: 45px;
     }
   }
   @media @lg {
+    .wrapper {
+      background-size: 200px 60px;
+      background-position: 98% 12px;
+    }
     .title {
-      max-width: none;
+      font-size: 56px;
     }
   }
 }
@@ -457,6 +465,10 @@ fieldset { padding: 0; border: 0; margin: 0; }
     font: 11px/normal @font-cinzel;
     text-transform: uppercase;
     &:after {.clearfix;}
+    .body-vertical & {
+      max-width: 500px;
+      margin: 0 auto;
+    }
 
     li {
       width: 16.66%;
@@ -485,6 +497,9 @@ fieldset { padding: 0; border: 0; margin: 0; }
         position: relative;
         overflow: hidden;
         transition: box-shadow @duration;
+        .body-vertical-mobile & {
+          height: 134px;
+        }
 
         span {
           padding: 15px 0 10px;
@@ -526,11 +541,9 @@ fieldset { padding: 0; border: 0; margin: 0; }
     }
   }
   @media @sm {
-      ul {
-        font-size: 14px;
-      }
+      ul { font-size: 14px; }
   }
-  @media @md {
+  @media @lg {
       height: auto;
       ul {
         height: auto;
