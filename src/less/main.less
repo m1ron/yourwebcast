@@ -92,7 +92,7 @@ body {
     &.body-index:not(.body-landscape) { height: 100%; }
   }
   @media @lg {
-    height: auto;
+    &.body-index:not(.body-landscape) { height: auto;}
   }
 }
 /* ==========================================================================
@@ -261,10 +261,12 @@ figure {
     max-width: @lg-width;
   }
   .main {
-    height: auto;
     padding-bottom: 226px;
-    > .wrapper {
+    .body-index:not(.body-landscape) & {
       height: auto;
+      > .wrapper {
+        height: auto;
+      }
     }
   }
 }
@@ -579,18 +581,26 @@ fieldset { padding: 0; border: 0; margin: 0; }
     ul { font-size: 14px; }
   }
   @media @lg {
-    height: auto;
     ul {
-      height: auto;
       font-size: 20px;
       li {
-        height: auto;
         a {
-          height: 460px;
           span {
             padding: 27px 0 17px;
             .color-white(.2);
             box-shadow: inset 0 40px 0 0 @color;
+          }
+        }
+      }
+    }
+    body:not(.body-landscape) & {
+      height: auto;
+      ul {
+        height: auto;
+        li {
+          height: auto;
+          a {
+            height: 460px;
           }
         }
       }
