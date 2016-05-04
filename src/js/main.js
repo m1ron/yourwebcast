@@ -11,21 +11,21 @@ $(document).ready(function () {
 
 	$(window).on('resize', function () {
 		var _body = $('body');
-		if ($(window).width() <= 768) {
-			if(_body.height() >= 450){
-				_body.addClass('body-vertical');
+		if($(window).width() <= 768) {
+			if ($(window).width() >= $(window).height()) {
+				_body.addClass('body-landscape').removeClass('body-portrait');
 			} else {
-				_body.removeClass('body-vertical');
-			}
-		} else if ($(window).width() <= 999) {
-			if(_body.height() >= 940){
-				_body.addClass('body-vertical');
-			} else {
-				_body.removeClass('body-vertical');
+				_body.addClass('body-portrait').removeClass('body-landscape');
 			}
 		} else {
-			_body.removeClass('body-vertical');
+			_body.removeClass('body-portrait body-landscape');
 		}
 	}).trigger('resize');
+
+	$('.gallery').slick({
+		slidesToShow: 1,
+		slidesToScroll: 1,
+		fade: true
+	});
 
 });

@@ -50,9 +50,16 @@ module.exports = function (grunt) {
 							src.vendor + 'html5shiv/dist/html5shiv.min.js',
 							src.vendor + 'jquery/dist/jquery.min.js',
 							src.vendor + 'fastclick/lib/fastclick.js',
-							src.vendor + 'slick.js/slick/slick.min.js'
+							src.vendor + 'slick-carousel/slick/slick.min.js'
 						],
 						dest: src.js + 'vendor'
+					}, {
+						expand: true,
+						flatten: true,
+						src: [
+							src.vendor + 'slick-carousel/slick/slick.css'
+						],
+						dest: src.css + 'temp'
 					}, {
 						expand: true,
 						flatten: true,
@@ -94,6 +101,11 @@ module.exports = function (grunt) {
 							src.js + 'vendor/slick.min.js'
 						],
 						dest: src.js + 'plugins.js'
+					}, {
+						src: [
+							src.css + 'vendor/*.min.css'
+						],
+						dest: src.css + 'plugins.css'
 					}, {
 						src: [
 							src.vendor + 'pure/pure-min.css',

@@ -11,7 +11,7 @@
 @md-width: 999px;
 @lg-width: 1054px;
 
-@xxs: ~"(min-width: 440px)";
+@xxs: ~"(min-width: 375px)";
 @xs: ~"(min-width: 568px)";
 @sm: ~"(min-width: 750px)";
 @md: ~"(min-width: 970px)";
@@ -85,10 +85,12 @@ body {
   width: 100%;
   min-width: @min-width;
   min-height: 100%;
-  height: 100%;
   margin: 0 auto;
   background: @color-black;
   position: relative;
+  @media @xxs {
+    &.body-index:not(.body-landscape) { height: 100%; }
+  }
   @media @lg {
     height: auto;
   }
@@ -181,47 +183,22 @@ h6 {&:extend(.h6); }
   padding: 0 15px;
   margin: 0 auto;
   &:after { .clearfix; }
-  @media @lg {
-    max-width: @lg-width;
-  }
 }
 .main {
-  padding: 20px 0 170px;
-  height: 100%;
-  > .wrapper {
-    height: 100%;
-  }
-  @media @xs {
-    padding-bottom: 130px;
-  }
-  @media @sm {
-    padding-bottom: 210px;
-  }
-  @media @lg {
-    height: auto;
-    padding: 40px 0 226px;
-    > .wrapper {
-      height: auto;
-    }
-  }
+  padding: 80px 0 110px;
 }
 .container {
-  height: 460px;
-  margin-left: 175px;
-  padding: 24px 46px;
+  padding: 15px;
   border: 1px solid @color-white;
   box-shadow: 0 0 0 2px @color-silver;
   border-radius: 4px;
-  overflow-y: scroll;
 
   .pure-g {
+    height: 100%;
     margin: 0 -10px;
+    overflow-y: scroll;
     [class *="pure-u"] { padding: 0 10px; }
   }
-}
-.scroll {
-  height: 344px;
-  overflow-y: scroll;
 }
 figure {
   margin: 0;
@@ -234,13 +211,63 @@ figure {
     height: auto;
   }
 }
-.push-left { margin: 0 16px 10px 0;float: left;}
+.push-left {
+  margin: 0 0 14px 0;
+}
 /* PureCSS styles */
 .pure-g {
   font-family: inherit;
   [class *="pure-u"] { font-family: inherit; }
 }
 .pure-menu-item:before { display: none; }
+@media @xxs {
+  .main {
+    .body-index:not(.body-landscape) & {
+      height: 100%;
+      > .wrapper { height: 100%; }
+    }
+  }
+}
+@media @xs {
+  .scroll {
+    height: 344px;
+    overflow-y: scroll;
+  }
+  .push-left {
+    margin-right: 16px;
+    margin-bottom: 10px;
+    float: left;
+  }
+}
+@media @sm {
+  .main {
+    padding-top: 40px;
+    padding-bottom: 210px;
+  }
+  .container {
+    height: 460px;
+    margin-left: 175px;
+    overflow-y: scroll;
+  }
+}
+@media @md {
+  .container {
+    padding: 24px 46px;
+    .pure-g { height: auto; overflow: visible; }
+  }
+}
+@media @lg {
+  .wrapper {
+    max-width: @lg-width;
+  }
+  .main {
+    height: auto;
+    padding-bottom: 226px;
+    > .wrapper {
+      height: auto;
+    }
+  }
+}
 /* ==========================================================================
    _FORMS
    ========================================================================== */
@@ -382,7 +409,6 @@ fieldset { padding: 0; border: 0; margin: 0; }
       top: 64px;
       left: 38px;
     }
-
     .slogan {
       top: 16px;
       left: 38px;
@@ -401,7 +427,7 @@ fieldset { padding: 0; border: 0; margin: 0; }
   padding: 20px 0;
   background: @color-black;
   position: absolute;
-  bottom: 95px;
+  top: 0;
   left: 0;
   right: 0;
   overflow: hidden;
@@ -410,23 +436,25 @@ fieldset { padding: 0; border: 0; margin: 0; }
     background-size: auto 75%;
   }
   .title {
-    max-width: 60%;
+    max-width: 200px;
     margin: 0;
     font: bold 18px/normal @font-poiret;
     position: relative;
-    left: 18px;
     letter-spacing: .02em;
   }
   @media @xs {
-    bottom: 70px;
     .wrapper {
       background-size: auto 100%;
     }
   }
   @media @sm {
+    bottom: 70px;
+    top: auto;
     .title {
+      max-width: 300px;
       padding-right: 0;
       font-size: 36px;
+      left: 18px;
     }
   }
   @media @md {
@@ -450,34 +478,23 @@ fieldset { padding: 0; border: 0; margin: 0; }
    _NAV
    ========================================================================== */
 .nav {
-  height: 100%;
   ul {
-    height: 100%;
     margin: 0 -4px;
     padding: 0;
     list-style: none;
     font: 11px/normal @font-cinzel;
     text-transform: uppercase;
-    &:after {.clearfix;}
-    .body-vertical & {
-      max-width: 500px;
-      margin: 0 auto;
-    }
+    &:after { .clearfix; }
 
     li {
       width: 16.66%;
       height: 100%;
       padding: 0 4px;
       float: left;
-      .body-vertical & {
-        width: 33.3%;
-        padding-bottom: 10px;
-        height: 50%;
-      }
 
       a {
         width: 100%;
-        height: 100%;
+        min-height: 185px;
         display: block;
         color: @color-white;
         background-position: 50% 0;
@@ -531,26 +548,53 @@ fieldset { padding: 0; border: 0; margin: 0; }
       }
     }
   }
+  .body-portrait & {
+    ul {
+      max-width: 500px;
+      margin: 0 auto;
+      li {
+        width: 33.3%;
+        padding-bottom: 8px;
+      }
+    }
+  }
+  @media @xxs {
+    body:not(.body-landscape) & {
+      height: 100%;
+      ul {
+        height: 100%;
+        li {
+          height: 100%;
+          a { height: 100%; }
+        }
+      }
+    }
+    body.body-portrait & {
+      ul {
+        li { height: 50%; }
+      }
+    }
+  }
   @media @sm {
-      ul { font-size: 14px; }
+    ul { font-size: 14px; }
   }
   @media @lg {
+    height: auto;
+    ul {
       height: auto;
-      ul {
+      font-size: 20px;
+      li {
         height: auto;
-        font-size: 20px;
-        li {
-          height: auto;
-          a {
-            height: 460px;
-            span {
-              padding: 27px 0 17px;
-              .color-white(.2);
-              box-shadow: inset 0 40px 0 0 @color;
-            }
+        a {
+          height: 460px;
+          span {
+            padding: 27px 0 17px;
+            .color-white(.2);
+            box-shadow: inset 0 40px 0 0 @color;
           }
         }
       }
+    }
   }
 }
 /* ==========================================================================
@@ -558,8 +602,8 @@ fieldset { padding: 0; border: 0; margin: 0; }
  ========================================================================== */
 .back {
   width: 164px;
-  height: 460px;
-  float: left;
+  height: auto;
+  margin-bottom: 20px;
   display: block;
   background-position: 50% 0;
   background-repeat: no-repeat;
@@ -569,7 +613,7 @@ fieldset { padding: 0; border: 0; margin: 0; }
   border-radius: 4px;
   text-align: center;
   color: @color-white;
-  font: 20px/normal @font-cinzel;
+  font: 15px/normal @font-cinzel;
   text-transform: uppercase;
   text-decoration: none;
   position: relative;
@@ -578,12 +622,8 @@ fieldset { padding: 0; border: 0; margin: 0; }
 
   .bottom {
     width: 100%;
-    height: 70px;
+    height: 40px;
     display: table;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
 
     span {
       padding: 0 4px;
@@ -591,8 +631,7 @@ fieldset { padding: 0; border: 0; margin: 0; }
       vertical-align: middle;
       .color-white(.2);
       background: @color-font;
-      box-shadow: inset 0 40px 0 0 @color;
-
+      box-shadow: inset 0 20px 0 0 @color;
       transition: background @duration;
     }
   }
@@ -600,6 +639,23 @@ fieldset { padding: 0; border: 0; margin: 0; }
   &:hover {
     box-shadow: 0 0 5px 2px @color-white;
     span { background: @color-blue-dark; }
+  }
+  @media @sm {
+    height: 460px;
+    margin-bottom: 0;
+    float: left;
+    font-size: 20px;
+    .bottom {
+      height: 70px;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      span {
+        .color-white(.2);
+        box-shadow: inset 0 40px 0 0 @color;
+      }
+    }
   }
 }
 /* ==========================================================================
@@ -638,18 +694,124 @@ fieldset { padding: 0; border: 0; margin: 0; }
 
   .item {
     margin-bottom: 18px;
-    &:after {.clearfix;}
+    &:after { .clearfix; }
 
     .image {
       width: 142px;
-      margin-right: 24px;
-      float: left;
+      margin-bottom: 14px;
     }
 
     .h {
       margin-bottom: 0;
       text-transform: uppercase;
       font-weight: bold;
+    }
+  }
+  @media @xs {
+    .item {
+      .image {
+        margin-right: 24px;
+        margin-bottom: 0;
+        float: left;
+      }
+    }
+  }
+}
+/* ==========================================================================
+   _GALLERY
+   ========================================================================== */
+.gallery {
+
+  &.slick-initialized {
+    padding-top: 50px;
+    position: relative;
+    .slick-arrow {
+      text-transform: uppercase;
+      position: absolute;
+      font-size: 16px;
+      top: 0;
+      z-index: 1000;
+      &:before, &:after {
+        .before;
+        clear: both;
+        width: 3px;
+        height: 10px;
+        background: @color-white;
+        opacity: .8;
+        position: absolute;
+      }
+      &:before { .rotate(45deg); }
+      &:after { .rotate(-45deg); }
+      &.slick-prev {
+        padding-left: 34px;
+        padding-right: 18px;
+        left: 0;
+        &:before, &:after { left: 10px; }
+        &:before { top: 7px; }
+        &:after { top: 13px; }
+      }
+      &.slick-next {
+        padding-right: 34px;
+        padding-left: 18px;
+        left: 104px;
+        &:before, &:after { right: 10px; }
+        &:before { top: 13px; }
+        &:after { top: 7px; }
+      }
+    }
+  }
+  .item {
+    &:after { .clearfix; }
+      a {
+        text-decoration: none;
+      }
+    .picture {
+      margin-bottom: 16px;
+      display: block;
+      border: none;
+      border-radius: 0;
+      img {
+        width: auto;
+        max-width: 100%;
+        height: auto;
+      }
+    }
+  }
+  @media @sm {
+    .item {
+      .text {
+        width: 40%;
+        float: left;
+      }
+      .picture {
+        width: 55%;
+        margin-bottom: 0;
+        float: right;
+      }
+    }
+  }
+  @media @md {
+    margin-top: -50px;
+    &.slick-initialized {
+      padding-top: 0;
+      .slick-arrow {
+        top: 60px;
+      }
+    }
+    .item {
+      .text {
+        width: 30%;
+        padding-top: 130px;
+      }
+      .picture {
+        width: 60%;
+      }
+    }
+  }
+  @media @lg {
+    .item {
+      .text { width: 26%;}
+      .picture { width: 70%; }
     }
   }
 }
