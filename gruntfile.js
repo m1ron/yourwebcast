@@ -60,13 +60,6 @@ module.exports = function (grunt) {
 							src.vendor + 'slick-carousel/slick/slick.css'
 						],
 						dest: src.css + 'temp'
-					}, {
-						expand: true,
-						flatten: true,
-						src: [
-							src.vendor + 'normalize-css/normalize.css'
-						],
-						dest: src.css
 					}
 				]
 			},
