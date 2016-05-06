@@ -169,6 +169,14 @@ h6 {
   content: '\0020';
   overflow: hidden;
 }
+.unselectable {
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: -moz-none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
 .hidden {
   display: none;
 }
@@ -320,6 +328,7 @@ input[type="submit"]:focus {
   bottom: 0;
   left: 0;
   right: 0;
+  cursor: default;
 }
 .footer .wrapper {
   height: 100%;
@@ -333,25 +342,33 @@ input[type="submit"]:focus {
   overflow: hidden;
   height: 3px;
   margin: 0 auto;
-  background: rgba(163, 175, 185, 0.23);
   position: absolute;
   top: 0;
   left: 15px;
   right: 15px;
+  background: #26292b;
 }
-.footer .slogan {
+.footer .company {
   margin-bottom: 10px;
-  font: 20px / normal 'Freestyle Script', cursive;
+  font: 20px/24px 'Freestyle Script', cursive;
+  color: #72797f;
 }
 .footer .copyright {
   margin: 0 0 10px;
   font-size: 11px;
   letter-spacing: .012em;
+  color: #42484e;
 }
 .footer .actions {
   margin: 0;
   padding: 0;
   list-style: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: -moz-none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
 }
 .footer .actions li {
   margin: 0 9px;
@@ -410,7 +427,7 @@ input[type="submit"]:focus {
     top: 44px;
     left: 30px;
   }
-  .footer .slogan {
+  .footer .company {
     margin-bottom: 0;
     position: absolute;
     top: 14px;
@@ -430,10 +447,11 @@ input[type="submit"]:focus {
     top: 64px;
     left: 38px;
   }
-  .footer .slogan {
+  .footer .company {
     top: 16px;
     left: 38px;
     font-size: 30px;
+    line-height: 36px;
   }
   .footer .actions {
     right: 26px;
@@ -451,6 +469,7 @@ input[type="submit"]:focus {
   left: 0;
   right: 0;
   overflow: hidden;
+  cursor: default;
 }
 .header .wrapper {
   background: url("../img/temp/flowers.jpg") 98% 0 no-repeat;
@@ -460,6 +479,7 @@ input[type="submit"]:focus {
   max-width: 200px;
   margin: 0;
   font: bold 18px / normal 'Poiret One', cursive;
+  display: block;
   position: relative;
   letter-spacing: .02em;
 }
@@ -496,6 +516,7 @@ input[type="submit"]:focus {
   }
   .header .title {
     font-size: 56px;
+    line-height: 66px;
   }
 }
 /* ==========================================================================
@@ -554,22 +575,22 @@ input[type="submit"]:focus {
   background: #28343d;
 }
 .nav ul li:nth-child(1) a {
-  background-image: url('../img/nav-1.jpg');
+  background-image: url('../img/nav/home.jpg');
 }
 .nav ul li:nth-child(2) a {
-  background-image: url('../img/nav-2.jpg');
+  background-image: url('../img/nav/about.jpg');
 }
 .nav ul li:nth-child(3) a {
-  background-image: url('../img/nav-3.jpg');
+  background-image: url('../img/nav/orders.jpg');
 }
 .nav ul li:nth-child(4) a {
-  background-image: url('../img/nav-4.jpg');
+  background-image: url('../img/nav/gallery.jpg');
 }
 .nav ul li:nth-child(5) a {
-  background-image: url('../img/nav-5.jpg');
+  background-image: url('../img/nav/video.jpg');
 }
 .nav ul li:nth-child(6) a {
-  background-image: url('../img/nav-6.jpg');
+  background-image: url('../img/nav/contact.jpg');
 }
 .body-portrait .nav ul {
   max-width: 500px;

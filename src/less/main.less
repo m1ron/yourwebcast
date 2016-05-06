@@ -26,6 +26,9 @@
 @color-font: #a3afb9;
 @color-black: #000;
 @color-gray-light: #e5eaef;
+@color-gray-medium: #72797f;
+@color-gray-dark: #42484e;
+@color-gray-darker: #26292b;
 @color-silver: #565f67;
 @color-blue-dark: #28343d;
 
@@ -92,7 +95,7 @@ body {
     &.body-index:not(.body-landscape) { height: 100%; }
   }
   @media @lg {
-    &.body-index:not(.body-landscape) { height: auto;}
+    &.body-index:not(.body-landscape) { height: auto; }
   }
 }
 /* ==========================================================================
@@ -175,6 +178,7 @@ h6 {&:extend(.h6); }
    ========================================================================== */
 .clearfix { display: table; content: '\0020'; clear: both; }
 .before { display: block; content: '\0020'; overflow: hidden; }
+.unselectable { -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: -moz-none; -ms-user-select: none; -o-user-select: none; user-select: none; }
 .hidden { display: none; }
 /* Wrapper */
 .wrapper {
@@ -302,6 +306,7 @@ fieldset { padding: 0; border: 0; margin: 0; }
   bottom: 0;
   left: 0;
   right: 0;
+  cursor: default;
 
   .wrapper {
     height: 100%;
@@ -313,35 +318,38 @@ fieldset { padding: 0; border: 0; margin: 0; }
       .before;
       height: 3px;
       margin: 0 auto;
-      .color-font(.23);
-      background: @color;
       position: absolute;
       top: 0;
       left: 15px;
       right: 15px;
+      background: @color-gray-darker;
     }
   }
 
-  .slogan {
+  .company {
     margin-bottom: 10px;
-    font: 20px/normal @font-freestyle;
+    font: 20px/24px @font-freestyle;
+    color: @color-gray-medium;
   }
 
   .copyright {
     margin: 0 0 10px;
     font-size: 11px;
     letter-spacing: .012em;
+    color: @color-gray-dark;
   }
 
   .actions {
     margin: 0;
     padding: 0;
     list-style: none;
+    .unselectable;
 
     li {
       margin: 0 9px;
       display: inline-block;
       vertical-align: middle;
+
       a {
         display: block;
         position: relative;
@@ -380,6 +388,7 @@ fieldset { padding: 0; border: 0; margin: 0; }
       }
     }
   }
+
   @media @xs {
     height: 70px;
     text-align: left;
@@ -393,7 +402,7 @@ fieldset { padding: 0; border: 0; margin: 0; }
       top: 44px;
       left: 30px;
     }
-    .slogan {
+    .company {
       margin-bottom: 0;
       position: absolute;
       top: 14px;
@@ -405,16 +414,18 @@ fieldset { padding: 0; border: 0; margin: 0; }
       top: 30px;
     }
   }
+
   @media @md {
     height: 113px;
     .copyright {
       top: 64px;
       left: 38px;
     }
-    .slogan {
+    .company {
       top: 16px;
       left: 38px;
       font-size: 30px;
+      line-height: 36px;
     }
     .actions {
       right: 26px;
@@ -433,22 +444,27 @@ fieldset { padding: 0; border: 0; margin: 0; }
   left: 0;
   right: 0;
   overflow: hidden;
+  cursor: default;
+
   .wrapper {
-    background: url("../img/temp/flowers.jpg") 98% 0 no-repeat;
+    background: url("@{images}/temp/flowers.jpg") 98% 0 no-repeat;
     background-size: auto 75%;
   }
   .title {
     max-width: 200px;
     margin: 0;
     font: bold 18px/normal @font-poiret;
+    display: block;
     position: relative;
     letter-spacing: .02em;
   }
+
   @media @xs {
     .wrapper {
       background-size: auto 100%;
     }
   }
+
   @media @sm {
     bottom: 70px;
     top: auto;
@@ -459,6 +475,7 @@ fieldset { padding: 0; border: 0; margin: 0; }
       left: 18px;
     }
   }
+
   @media @md {
     bottom: 111px;
     .title {
@@ -466,6 +483,7 @@ fieldset { padding: 0; border: 0; margin: 0; }
       font-size: 45px;
     }
   }
+
   @media @lg {
     .wrapper {
       background-size: 200px 60px;
@@ -473,6 +491,7 @@ fieldset { padding: 0; border: 0; margin: 0; }
     }
     .title {
       font-size: 56px;
+      line-height: 66px;
     }
   }
 }
@@ -529,25 +548,12 @@ fieldset { padding: 0; border: 0; margin: 0; }
           span { background: @color-blue-dark; }
         }
       }
-
-      &:nth-child(1) {
-        a { background-image: url('../img/nav-1.jpg'); }
-      }
-      &:nth-child(2) {
-        a { background-image: url('../img/nav-2.jpg'); }
-      }
-      &:nth-child(3) {
-        a { background-image: url('../img/nav-3.jpg'); }
-      }
-      &:nth-child(4) {
-        a { background-image: url('../img/nav-4.jpg'); }
-      }
-      &:nth-child(5) {
-        a { background-image: url('../img/nav-5.jpg'); }
-      }
-      &:nth-child(6) {
-        a { background-image: url('../img/nav-6.jpg'); }
-      }
+      &:nth-child(1) a { background-image: url('@{images}/nav/home.jpg'); }
+      &:nth-child(2) a { background-image: url('@{images}/nav/about.jpg'); }
+      &:nth-child(3) a { background-image: url('@{images}/nav/orders.jpg'); }
+      &:nth-child(4) a { background-image: url('@{images}/nav/gallery.jpg'); }
+      &:nth-child(5) a { background-image: url('@{images}/nav/video.jpg'); }
+      &:nth-child(6) a { background-image: url('@{images}/nav/contact.jpg'); }
     }
   }
   .body-portrait & {
@@ -772,9 +778,9 @@ fieldset { padding: 0; border: 0; margin: 0; }
   }
   .item {
     &:after { .clearfix; }
-      a {
-        text-decoration: none;
-      }
+    a {
+      text-decoration: none;
+    }
     .picture {
       margin-bottom: 16px;
       display: block;
@@ -820,7 +826,7 @@ fieldset { padding: 0; border: 0; margin: 0; }
   }
   @media @lg {
     .item {
-      .text { width: 26%;}
+      .text { width: 26%; }
       .picture { width: 70%; }
     }
   }
