@@ -57,7 +57,8 @@ module.exports = function (grunt) {
 						expand: true,
 						flatten: true,
 						src: [
-							src.vendor + 'slick-carousel/slick/slick.css'
+							src.vendor + 'slick-carousel/slick/slick.css',
+							src.vendor + 'animate.css/animate.min.css'
 						],
 						dest: src.css + 'temp'
 					}
