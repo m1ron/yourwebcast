@@ -2,7 +2,21 @@
  * Project: YourwebCast.Com
  * File: Main styles
  */
-
+/* ==========================================================================
+   _FONTS
+   ========================================================================== */
+/* Cinzel */
+@import url(https://fonts.googleapis.com/css?family=Cinzel);
+/* Poiret One */
+@import url(https://fonts.googleapis.com/css?family=Poiret+One);
+/* Freestyle Script */
+@font-face {
+  font-family: 'Freestyle Script';
+  src: url('../fonts/freestyle-script-webfont.eot');
+  src: local('☺'), url('../fonts/freestyle-script-webfont.woff') format('woff'), url('../fonts/freestyle-script-webfont.ttf') format('truetype'), url('../fonts/freestyle-script-webfont.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
 // ==========================================================================
 // _VARIABLES
 // ==========================================================================
@@ -23,7 +37,7 @@
 @font-freestyle: 'Freestyle Script', cursive;
 
 @color-white: #fff;
-@color-font: #a3afb9;
+@color-font: #a5aeb6;
 @color-black: #000;
 @color-gray-light: #e5eaef;
 @color-gray-medium: #72797f;
@@ -108,21 +122,6 @@
   from { .translate-3d(0, 15px, 0); opacity: .4; }
   70% { .translate-3d(0, -2px, 0); }
   to { .translate-3d(0, 0, 0); opacity: 1; }
-}
-/* ==========================================================================
-   _FONTS
-   ========================================================================== */
-/* Cinzel */
-@import url(https://fonts.googleapis.com/css?family=Cinzel);
-/* Poiret One */
-@import url(https://fonts.googleapis.com/css?family=Poiret+One);
-/* Freestyle Script */
-@font-face {
-  font-family: 'Freestyle Script';
-  src: url('../fonts/freestyle-script-webfont.eot');
-  src: local('☺'), url('../fonts/freestyle-script-webfont.woff') format('woff'), url('../fonts/freestyle-script-webfont.ttf') format('truetype'), url('../fonts/freestyle-script-webfont.svg') format('svg');
-  font-weight: normal;
-  font-style: normal;
 }
 /* ==========================================================================
    _GENERAL STYLES
@@ -498,7 +497,11 @@ fieldset { padding: 0; border: 0; margin: 0; }
     display: block;
     position: relative;
     z-index: 1;
-    font: bold 18px/normal @font-poiret;
+    font: 18px/normal @font-poiret;
+    color: @color-font;
+    text-shadow: 0 0 1px @color-font;
+    -webkit-font-smoothing: subpixel-antialiased;
+    -moz-osx-font-smoothing: auto;
 
     &:before {
       width: 100px;
@@ -542,7 +545,7 @@ fieldset { padding: 0; border: 0; margin: 0; }
     .title {
       padding-left: 20px;
       padding-right: 200px;
-      font-size: 55px;
+      font-size: 48px;
       line-height: 65px;
       letter-spacing: .025em;
       white-space: nowrap;
@@ -552,6 +555,12 @@ fieldset { padding: 0; border: 0; margin: 0; }
         top: 20px;
         right: 18px;
       }
+    }
+  }
+
+  @media @lg {
+    .title {
+      font-size: 55px;
     }
   }
 }
@@ -584,7 +593,7 @@ fieldset { padding: 0; border: 0; margin: 0; }
         display: block;
         text-decoration: none;
         &:hover {
-          .inner { box-shadow: 0 0 5px 3px rgba(255, 255, 255, .75); .animation-name (nav-bounce-hover); }
+          .inner { box-shadow: 0 0 5px 3px rgba(255, 255, 255, .75); /*.animation-name (nav-bounce-hover);*/ }
           .title:before { opacity: 1; }
         }
       }
@@ -600,13 +609,13 @@ fieldset { padding: 0; border: 0; margin: 0; }
         right: 2px;
         background: url('@{images}/nav.png') no-repeat 50% 0;
         background-size: 100% 100%;
-        .animation-name (shadow-bounce-blur);
+        //.animation-name (shadow-bounce-blur);
         .animation-duration(@duration-animation);
         .animation-fill-mode(both);
       }
 
       &:hover {
-        &:before { .animation-name (shadow-bounce-hover); }
+        //&:before { .animation-name (shadow-bounce-hover); }
       }
 
       &:nth-child(1):before, &:nth-child(2):before, &:nth-child(3):before { display: none; }
@@ -637,7 +646,7 @@ fieldset { padding: 0; border: 0; margin: 0; }
       box-shadow: 0 0 0 2px @color-silver;
       transition: box-shadow @duration-animation;
       -webkit-backface-visibility: hidden;
-      .animation-name (nav-bounce-blur);
+      //.animation-name (nav-bounce-blur);
       .animation-duration(@duration-animation);
       .animation-fill-mode(both);
 
@@ -668,6 +677,8 @@ fieldset { padding: 0; border: 0; margin: 0; }
       z-index: 5;
       background: @color-font url('@{images}/button.png') repeat-x center center;
       background-size: auto 100%;
+      .color-black(.15);
+      box-shadow: inset 0 1px 0 @color;
       -webkit-backface-visibility: hidden;
       .h { display: none; }
 
@@ -684,6 +695,8 @@ fieldset { padding: 0; border: 0; margin: 0; }
         background: url('@{images}/button-hover.png') no-repeat 0 50%;
         background-size: auto 100%;
         transition: opacity @duration;
+        .color-black(.25);
+        box-shadow: inset 0 1px 1px @color;
         -webkit-backface-visibility: hidden;
       }
     }
@@ -748,9 +761,15 @@ fieldset { padding: 0; border: 0; margin: 0; }
           width: 16.66%;
           &:nth-child(1):before, &:nth-child(2):before, &:nth-child(3):before { display: block; }
           &:nth-child(n+1) { margin-bottom: 0; }
+          &:before { .animation-name (shadow-bounce-blur); }
+          &:hover:before { .animation-name (shadow-bounce-hover); }
+          a:hover {
+            .inner { .animation-name (nav-bounce-hover); }
+          }
         }
         .inner {
-          min-height: 460px;
+          min-height: 400px;
+          .animation-name (nav-bounce-blur);
           &:before { bottom: 70px; background-position: top left; }
         }
         .title {
@@ -760,6 +779,12 @@ fieldset { padding: 0; border: 0; margin: 0; }
           line-height: 26px;
           letter-spacing: .01em;
         }
+      }
+    }
+
+    @media @lg {
+      body:not(.a) & {
+        .inner { min-height: 460px; }
       }
     }
   }
