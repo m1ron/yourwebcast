@@ -38,8 +38,8 @@ $(document).ready(function () {
 
 		$('.header').each(function () {
 			$('.logo', this).on('click', closePage);
-			$('<a href="#"></a>').addClass('toggle').on('click', closePage).appendTo(this);
 		});
+		$('.back').on('click', closePage);
 		$('li', this).each(function () {
 			$('a', this).wrapInner('<span class="title"></span>').wrapInner('<span class="inner"></span>').on('click', function (e) {
 				_body.addClass('nav-hidden').addClass('nav-page-visible');
