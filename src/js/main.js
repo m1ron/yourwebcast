@@ -6,13 +6,16 @@
  */
 $(document).ready(function () {
 
+	window._body = $('body');
+
 	/** Fastclick */
 	FastClick.attach(document.body);
 
+	/** Layout */
+	_body.wrapInner('<div class="spacer"></div>').wrapInner('<div class="layout-in"></div>').wrapInner('<div class="layout"></div>');
 
 	/** Detecting portrait/landscape */
 	$(window).on('resize', function () {
-		var _body = $('body');
 		if ($(window).width() <= 768) {
 			if ($(window).width() >= $(window).height()) {
 				_body.addClass('body-landscape').removeClass('body-portrait');
@@ -24,14 +27,26 @@ $(document).ready(function () {
 		}
 	}).trigger('resize');
 
-	/** Layout */
-	$('body').wrapInner('<div class="spacer"></div>').wrapInner('<div class="layout-in"></div>').wrapInner('<div class="layout"></div>');
-
 
 	/** Navigation */
 	$('.nav').each(function () {
-		$('li').each(function () {
-			$('a', this).wrapInner('<span class="title"></span>').wrapInner('<span class="inner"></span>');
+		function closePage(e) {
+			_body.removeClass('nav-hidden').removeClass('nav-page-visible');
+			$('.page-visible').removeClass('page-visible');
+			e.preventDefault();
+		}
+
+		$('.header').each(function () {
+			$('.logo', this).on('click', closePage);
+			$('<a href="#"></a>').addClass('toggle').on('click', closePage).appendTo(this);
+		});
+		$('li', this).each(function () {
+			$('a', this).wrapInner('<span class="title"></span>').wrapInner('<span class="inner"></span>').on('click', function (e) {
+				_body.addClass('nav-hidden').addClass('nav-page-visible');
+				$('.page-visible').removeClass('page-visible');
+				$($(this).attr('href')).addClass('page-visible');
+				e.preventDefault();
+			});
 		});
 	});
 

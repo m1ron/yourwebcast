@@ -38,16 +38,23 @@
 
 @color-white: #fff;
 @color-font: #a5aeb6;
+@color-font-light: #c2c8cd;
 @color-black: #000;
-@color-gray-light: #e5eaef;
 @color-gray-medium: #72797f;
 @color-gray-dark: #42484e;
 @color-gray-darker: #26292b;
 @color-silver: #565f67;
 @color-blue-dark: #28343d;
 
+@duration-fast: .3s ease;
 @duration: .4s ease;
 @duration-animation: .6s;
+
+@margin-xxs: 3px;
+@margin-xs: 7px;
+@margin-s: 14px;
+@margin-m: 21px;
+@margin-b: 28px;
 
 @images: '../img';
 // ==========================================================================
@@ -135,11 +142,15 @@ html {
   height: 100%;
   padding: 0;
   margin: 0;
-  font: 12px/14px @font-default;
+  font: 13px @font-default;
   color: @color-font;
   background: @color-black;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  @media @sm {
+    font-size: 12px;
+    line-height: 14px;
+  }
 }
 body {
   width: 100%;
@@ -153,71 +164,91 @@ body {
 /* ==========================================================================
    _TEXT STYLES
    ========================================================================== */
-p {
-  margin: 0 0 14px;
+p, ul, ol, dl {
+  margin-top: @margin-s;
+  margin-bottom: @margin-s;
 }
+ul, ol { padding-left: @margin-m; }
 :focus { outline: -webkit-focus-ring-color auto 0; }
 a {
-  color: @color-gray-light;
+  border-bottom: 1px solid @color-font-light;
+  color: @color-font-light;
   outline: none;
-  text-decoration: underline;
-  transition: color @duration;
-
-  &:hover, &:focus {
-    outline: none;
-    text-decoration: none;
+  text-decoration: none;
+  transition: border-color @duration, color @duration;
+  &:hover, &:focus { border-bottom-color: transparent; color: @color-white; outline: none; text-decoration: none; }
+}
+figure {
+  margin-left: 0;
+  margin-right: 0;
+  img { border: 1px solid @color-white; border-radius: 3px; display: block; }
+  &.push-left { margin-top: 3px; margin-right: @margin-s; float: left; }
+  &.push-right { margin-top: 3px; margin-left: @margin-s; float: right; }
+  &.push-left, &.push-right {
+    @media (max-width: 370px) {
+      img { width: 100%; max-width: 120px; height: auto; }
+    }
   }
+  &.fullwidth img { width: 100%; max-width: 100%; height: auto; }
 }
 audio, canvas, img, video { vertical-align: middle; }
+/* HEADINGS */
 .h-default {
-  margin: 0;
+  margin-top: @margin-b;
+  margin-bottom: @margin-s;
+  font-family: @font-default;
   line-height: normal;
   font-weight: normal;
-  color: @color-font;
-  font-family: @font-freestyle;
+  font-style: normal;
+  color: @color-font-light;
+}
+h1, h2, h3, h4, h5, h6 {
+  & + p { margin-top: 0; }
 }
 .h1 {
   &:extend(.h-default);
-  margin: 8px 0;
-  font-size: 32px;
-  font-style: normal;
+  font-family: @font-freestyle;
+  font-size: 50px;
 }
 .h2 {
   &:extend(.h-default);
-  margin: 8px 0;
-  font-size: 28px;
-  font-style: normal;
+  font-family: @font-freestyle;
+  font-size: 36px;
+  line-height: 36px;
 }
 .h3 {
   &:extend(.h-default);
-  margin: 8px 0;
-  font-size: 26px;
-  font-style: normal;
+  font-family: @font-freestyle;
+  font-size: 32px;
 }
 .h4 {
   &:extend(.h-default);
-  margin: 8px 0;
-  font-size: 24px;
-  font-style: normal;
+  margin-top: @margin-s;
+  margin-bottom: @margin-xxs;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 .h5 {
   &:extend(.h-default);
-  margin: 8px 0;
-  font-size: 22px;
-  font-style: normal;
+  margin-top: @margin-s;
+  margin-bottom: @margin-xxs;
+  font-size: inherit;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 .h6 {
   &:extend(.h-default);
-  margin: 8px 0;
-  font-size: 20px;
-  font-style: normal;
+  margin-top: @margin-s;
+  margin-bottom: @margin-xxs;
+  font-size: .9em;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 @media @sm {
   .h1 { font-size: 40px; }
   .h2 { font-size: 36px; }
   .h3 { font-size: 32px; }
-  .h4 { font-size: 28px; }
-  .h5 { font-size: 24px; }
 }
 h1 {&:extend(.h1); }
 h2 {&:extend(.h2); }
@@ -236,8 +267,10 @@ h6 {&:extend(.h6); }
 .wrapper {
   width: 100%;
   max-width: @md-width;
-  padding: 0 15px;
-  margin: 0 auto;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
   &:after { .clearfix; }
   @media @lg {
     max-width: @lg-width;
@@ -247,6 +280,7 @@ h6 {&:extend(.h6); }
   position: relative;
 }
 .main {
+  .wrapper;
   @media @sm {
     padding-top: 30px;
   }
@@ -260,52 +294,41 @@ h6 {&:extend(.h6); }
   &-in {
     width: 100%;
     display: table-cell;
-    vertical-align: middle;
+    vertical-align: top;
     position: relative;
+    @media @md {
+      vertical-align: middle;
+    }
   }
   .body-landscape & { padding-top: 56px; }
 }
-.container {
+.content {
   padding: 15px;
   border: 1px solid @color-white;
-  box-shadow: 0 0 0 2px @color-silver;
   border-radius: 4px;
+  margin: 0 -4px;
+  .color-white(.05);
+  background: @color;
+  box-shadow: 0 0 0 2px @color-silver;
 
-  .pure-g {
-    height: 100%;
-    margin: 0 -10px;
-    overflow-y: scroll;
-    [class *="pure-u"] { padding: 0 10px; }
-  }
+  > *:first-child, > *:first-child > *:first-child { margin-top: 0; }
+  > *:last-child, > *:last-child > *:last-child { margin-bottom: 0; }
+  article, section { clear: both; }
 
   @media @sm {
     height: 460px;
     margin-left: 175px;
-    overflow-y: scroll;
+    overflow: hidden;
+    overflow-y: auto;
   }
   @media @md {
     padding: 24px 46px;
     .pure-g { height: auto; overflow: visible; }
   }
 }
-figure {
-  margin: 0;
-  border: 1px solid @color-white;
-  border-radius: 3px;
-  display: inline-block;
-
-  img {
-    max-width: 100%;
-    height: auto;
-  }
-}
-.push-left {
-  margin: 0 0 14px 0;
-  @media @xs {
-    margin-right: 16px;
-    margin-bottom: 10px;
-    float: left;
-  }
+.page {
+  display: none;
+  .nav-page-visible &&-visible { display: block; }
 }
 .scroll {
   @media @xs {
@@ -345,37 +368,37 @@ fieldset { padding: 0; border: 0; margin: 0; }
    _FOOTER
    ========================================================================== */
 .footer {
+  padding-top: @margin-s;
+  padding-bottom: @margin-s;
   margin-top: 25px;
   position: relative;
   z-index: 5;
   text-align: center;
   cursor: default;
+  .wrapper;
 
-  .wrapper {
-    padding-top: 12px;
-    padding-bottom: 15px;
-    position: relative;
-
-    &:before {
-      .before;
-      height: 3px;
-      margin: 0 auto;
-      position: absolute;
-      top: 0;
-      left: 10px;
-      right: 10px;
-      background: @color-gray-darker;
-    }
+  &:before {
+    .before;
+    height: 3px;
+    margin: 0 auto;
+    position: absolute;
+    top: 0;
+    left: 15px;
+    right: 15px;
+    background: @color-gray-darker;
   }
 
+  p:last-child { margin-bottom: 0; }
+
   .company {
-    margin-bottom: 5px;
-    font: 20px/24px @font-freestyle;
+    margin-top: @margin-s;
+    margin-bottom: @margin-xs;
+    font: 24px @font-freestyle;
     color: @color-gray-medium;
   }
 
   .copyright {
-    margin: 0 0 10px;
+    margin: @margin-xs 0;
     font-size: 11px;
     letter-spacing: .012em;
     color: @color-gray-dark;
@@ -393,6 +416,7 @@ fieldset { padding: 0; border: 0; margin: 0; }
       vertical-align: middle;
 
       a {
+        border: none;
         display: block;
         position: relative;
         z-index: 1;
@@ -433,85 +457,60 @@ fieldset { padding: 0; border: 0; margin: 0; }
 
   @media @xs {
     height: 70px;
+    padding-top: 0;
+    padding-bottom: 0;
     text-align: left;
-    .wrapper {
-      padding-top: 0;
-      padding-bottom: 0;
-    }
-    .copyright {
-      margin-bottom: 0;
-      position: absolute;
-      top: 44px;
-      left: 30px;
-    }
-    .company {
-      margin-bottom: 0;
-      font-size: 24px;
-      position: absolute;
-      top: 14px;
-      left: 30px;
-    }
-    .actions {
-      position: absolute;
-      right: 30px;
-      top: 30px;
-    }
+    .copyright { margin-bottom: 0; position: absolute; top: 44px; left: 30px; }
+    .company { margin-bottom: 0; font-size: 24px; position: absolute; top: 14px; left: 30px; }
+    .actions { position: absolute; right: 30px; top: 30px; }
   }
   @media @sm {
     margin-top: 80px;
     z-index: 80;
-    .wrapper:before { left: 15px; right: 15px; }
+    &:before { left: 15px; right: 15px; }
   }
   @media @md {
     height: 113px;
     margin-top: 115px;
-    .copyright {
-      top: 64px;
-      left: 38px;
-    }
-    .company {
-      top: 16px;
-      left: 38px;
-      font-size: 30px;
-      line-height: 36px;
-    }
-    .actions {
-      right: 26px;
-      top: 66px;
-    }
+    .copyright { top: 64px; left: 38px; }
+    .company { top: 16px; left: 38px; font-size: 30px; line-height: 36px; }
+    .actions { right: 26px; top: 66px; }
   }
 }
 /* ==========================================================================
    _HEADER
    ========================================================================== */
 .header {
-  padding: 20px 0;
+  padding: 20px 15px;
   position: relative;
   overflow: hidden;
   z-index: 5;
   cursor: default;
+  .wrapper;
 
-  .title {
+  .logo {
     padding-right: 100px;
     margin: 0;
     display: block;
     position: relative;
     z-index: 1;
-    font: 18px/normal @font-poiret;
+    font: 22px/24px @font-poiret;
     color: @color-font;
     text-shadow: 0 0 1px @color-font;
     -webkit-font-smoothing: subpixel-antialiased;
     -moz-osx-font-smoothing: auto;
 
+    .nav-hidden & { cursor: pointer; }
+
     &:before {
-      width: 100px;
-      height: 30px;
+      width: 80px;
+      height: 25px;
       margin: auto;
       display: block;
       content: '';
       position: absolute;
       top: 0;
-      right: 0;
+      right: 35px;
       bottom: 0;
       z-index: -1;
       background: url("@{images}/flower.png") center center no-repeat;
@@ -519,16 +518,54 @@ fieldset { padding: 0; border: 0; margin: 0; }
     }
   }
 
-  @media @xxs {
-    padding: 15px 0;
-    .title {
-      padding-right: 140px; font-size: 21px; line-height: 24px;
-      &:before { width: 133px; height: 40px; }
+  .toggle {
+    width: 24px;
+    height: 2px;
+    border: none;
+    margin: auto;
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 15px;
+    bottom: 0;
+    z-index: 10;
+    background: @color-white;
+    opacity: .8;
+    transition: background-color @duration-fast;
+    .nav-hidden & { background-color: transparent; }
+
+    &:before, &:after {
+      width: inherit;
+      height: inherit;
+      border-radius: 1px;
+      display: block;
+      content: '';
+      position: absolute;
+      left: 0;
+      background: @color-white;
+      -webkit-transition: top @duration-fast, -webkit-transform @duration-fast;
+      transition: top @duration-fast, transform @duration-fast;
+      .rotate(0deg);
+      -webkit-transform-origin: center center;
+      transform-origin: center center;
+    }
+    &:before {
+      top: -7px;
+      .nav-hidden & { top: 0; .rotate(45deg); }
+    }
+    &:after {
+      top: 7px;
+      .nav-hidden & { top: 0; .rotate(-45deg); }
     }
   }
 
-  @media @xs {
-    .wrapper { background-size: auto 100%; }
+  @media @xxs {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    .logo {
+      padding-right: 140px; font-size: 21px; line-height: 24px;
+      &:before { width: 133px; height: 40px; }
+    }
   }
 
   @media @sm {
@@ -537,12 +574,12 @@ fieldset { padding: 0; border: 0; margin: 0; }
     bottom: 75px;
     right: 0;
     z-index: 70;
-    .title { max-width: none; padding-right: 0; font-size: 36px; }
+    .logo { max-width: none; padding-right: 0; font-size: 36px; }
   }
 
   @media @md {
     bottom: 120px;
-    .title {
+    .logo {
       padding-left: 20px;
       padding-right: 200px;
       font-size: 48px;
@@ -570,6 +607,9 @@ fieldset { padding: 0; border: 0; margin: 0; }
 .nav {
   position: relative;
   z-index: 50;
+
+  &-hidden & { display: none; }
+
   ul {
     margin: 0 -4px;
     padding: 0;
@@ -590,6 +630,7 @@ fieldset { padding: 0; border: 0; margin: 0; }
       a {
         width: 100%;
         min-height: 185px;
+        border: none;
         display: block;
         text-decoration: none;
         &:hover {
@@ -644,6 +685,7 @@ fieldset { padding: 0; border: 0; margin: 0; }
       text-shadow: 1px 1px 1px @color;
       text-align: center;
       box-shadow: 0 0 0 2px @color-silver;
+      background: @color-white;
       transition: box-shadow @duration-animation;
       -webkit-backface-visibility: hidden;
       //.animation-name (nav-bounce-blur);
@@ -652,6 +694,7 @@ fieldset { padding: 0; border: 0; margin: 0; }
 
       &:before {
         .before;
+        border-radius: 4px;
         position: absolute;
         top: 0;
         right: 0;
@@ -660,13 +703,16 @@ fieldset { padding: 0; border: 0; margin: 0; }
         background-repeat: no-repeat;
         background-position: 0 0;
         background-size: cover;
+        -webkit-backface-visibility: hidden;
       }
     }
 
     .title {
       height: 40px;
       padding: 12px 0 8px;
+      border-radius: 0 0 3px 3px;
       display: block;
+      overflow: hidden;
       font-size: 12px;
       line-height: 20px;
       white-space: nowrap;
@@ -796,7 +842,7 @@ fieldset { padding: 0; border: 0; margin: 0; }
   width: 164px;
   height: auto;
   margin-bottom: 20px;
-  display: block;
+  display: none;
   background-position: 50% 0;
   background-repeat: no-repeat;
   background-size: cover;
@@ -853,24 +899,30 @@ fieldset { padding: 0; border: 0; margin: 0; }
 /* ==========================================================================
    _NEWS-LIST
    ========================================================================== */
-.news-list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
+.news {
 
-  li {
-    margin-bottom: 10px;
+  .entry {
+    margin-bottom: @margin-s;
 
-    .h {
-      text-transform: uppercase;
-      margin-bottom: 0;
+    .title {
+      margin-top: 0;
+      margin-bottom: 4px;
       font-weight: bold;
+      font-family: inherit;
+      font-size: inherit;
+      text-transform: uppercase;
+      & + p { margin-top: 0; }
+    }
+
+    &:last-child {
+      p:last-child { margin-bottom: 0; }
     }
   }
 }
 /* ==========================================================================
    _ARTICLE
    ========================================================================== */
+#about { display: block; }
 .article {
   &:after { .clearfix; }
   .title {
