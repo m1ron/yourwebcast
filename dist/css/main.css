@@ -447,7 +447,7 @@ h6 {
     max-width: 1054px;
   }
 }
-@media (min-width: 750px) {
+@media (min-width: 970px) {
   .main {
     padding-top: 30px;
   }
@@ -711,20 +711,15 @@ input[type="button"]:hover:before {
     top: 30px;
   }
 }
-@media (min-width: 750px) {
+@media (min-width: 970px) {
   .footer {
-    margin-top: 80px;
+    height: 113px;
+    margin-top: 115px;
     z-index: 80;
   }
   .footer:before {
     left: 15px;
     right: 15px;
-  }
-}
-@media (min-width: 970px) {
-  .footer {
-    height: 113px;
-    margin-top: 115px;
   }
   .footer .copyright {
     top: 64px;
@@ -773,7 +768,7 @@ input[type="button"]:hover:before {
   display: block;
   position: relative;
   z-index: 1;
-  font: 22px/24px 'Poiret One', cursive;
+  font: 22px/24px 'Poiret One', sans-serif;
   color: #a5aeb6;
   text-shadow: 0 0 1px #a5aeb6;
   -webkit-font-smoothing: subpixel-antialiased;
@@ -800,6 +795,19 @@ input[type="button"]:hover:before {
   .header {
     padding-top: 15px;
     padding-bottom: 15px;
+    margin-bottom: 15px;
+  }
+  .header:before {
+    display: block;
+    content: '\0020';
+    overflow: hidden;
+    height: 3px;
+    margin: 0 auto;
+    position: absolute;
+    bottom: 0;
+    left: 15px;
+    right: 15px;
+    background: #26292b;
   }
   .header .logo {
     padding-right: 140px;
@@ -811,25 +819,32 @@ input[type="button"]:hover:before {
     height: 40px;
   }
 }
-@media (min-width: 750px) {
-  .header {
-    position: absolute;
-    left: 0;
-    bottom: 75px;
-    right: 0;
-    z-index: 70;
-  }
+@media (min-width: 667px) {
   .header .logo {
-    max-width: none;
-    padding-right: 0;
+    font-size: 26px;
+    line-height: 30px;
+  }
+}
+@media (min-width: 750px) {
+  .header .logo {
     font-size: 36px;
+    line-height: 46px;
   }
 }
 @media (min-width: 970px) {
   .header {
+    margin-bottom: 0;
+    position: absolute;
+    left: 0;
     bottom: 120px;
+    right: 0;
+    z-index: 70;
+  }
+  .header:before {
+    display: none;
   }
   .header .logo {
+    max-width: none;
     padding-left: 20px;
     padding-right: 200px;
     font-size: 48px;
@@ -1193,12 +1208,8 @@ input[type="button"]:hover:before {
 }
 @media (min-width: 750px) {
   .content {
-    height: 460px;
+    margin-right: 0;
     margin-left: 175px;
-    /*
-    overflow: hidden;
-    overflow-y: auto;
-    */
   }
 }
 @media (min-width: 970px) {

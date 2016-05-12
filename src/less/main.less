@@ -25,15 +25,16 @@
 @md-width: 999px;
 @lg-width: 1054px;
 
-@xxs: ~"(min-width: 375px)";
-@xs: ~"(min-width: 568px)";
-@sm: ~"(min-width: 750px)";
-@md: ~"(min-width: 970px)";
-@lg: ~"(min-width: 1280px)";
+@mobile-sm: ~"(min-width: 375px)";
+@mobile-md: ~"(min-width: 568px)";
+@mobile-lg: ~"(min-width: 667px)";
+@tablet-sm: ~"(min-width: 750px)";
+@tablet-md: ~"(min-width: 970px)";
+@desktop: ~"(min-width: 1280px)";
 
 @font-default: Helvetica, Arial, sans-serif;
 @font-cinzel: 'Cinzel', serif;
-@font-poiret: 'Poiret One', cursive;
+@font-poiret: 'Poiret One', sans-serif;
 @font-freestyle: 'Freestyle Script', cursive;
 
 @color-white: #fff;
@@ -154,7 +155,7 @@ html {
   background: @color-black;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  @media @sm {
+  @media @tablet-sm {
     font-size: 12px;
     line-height: 14px;
   }
@@ -252,7 +253,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: bold;
   text-transform: uppercase;
 }
-@media @sm {
+@media @tablet-sm {
   .h1 { font-size: 40px; }
   .h2 { font-size: 36px; }
   .h3 { font-size: 32px; }
@@ -285,7 +286,7 @@ h6 {&:extend(.h6); }
   margin-right: auto;
   margin-left: auto;
   &:after { .clearfix; }
-  @media @lg {
+  @media @desktop {
     max-width: @lg-width;
   }
 }
@@ -296,7 +297,7 @@ h6 {&:extend(.h6); }
 /* Main */
 .main {
   .wrapper;
-  @media @sm {
+  @media @tablet-md {
     padding-top: 30px;
   }
 }
@@ -312,7 +313,7 @@ h6 {&:extend(.h6); }
     display: table-cell;
     vertical-align: top;
     position: relative;
-    @media @md {
+    @media @tablet-md {
       vertical-align: middle;
     }
   }
@@ -494,7 +495,7 @@ fieldset { padding: 0; border: 0; margin: 0; }
     }
   }
 
-  @media @xs {
+  @media @mobile-md {
     height: 70px;
     padding-top: 0;
     padding-bottom: 0;
@@ -503,14 +504,11 @@ fieldset { padding: 0; border: 0; margin: 0; }
     .company { margin-top: 0; margin-bottom: 0; font-size: 24px; position: absolute; top: 14px; left: 30px; }
     .actions { position: absolute; right: 30px; top: 30px; }
   }
-  @media @sm {
-    margin-top: 80px;
-    z-index: 80;
-    &:before { left: 15px; right: 15px; }
-  }
-  @media @md {
+  @media @tablet-md {
     height: 113px;
     margin-top: 115px;
+    z-index: 80;
+    &:before { left: 15px; right: 15px; }
     .copyright { top: 64px; left: 38px; }
     .company { top: 16px; left: 38px; font-size: 30px; line-height: 36px; }
     .actions { right: 26px; top: 66px; }
@@ -557,43 +555,55 @@ fieldset { padding: 0; border: 0; margin: 0; }
     }
   }
 
-  @media @xxs {
+  @media @mobile-sm {
     padding-top: 15px;
     padding-bottom: 15px;
+    margin-bottom: 15px;
+    &:before {
+      .before;
+      height: 3px;
+      margin: 0 auto;
+      position: absolute;
+      bottom: 0;
+      left: 15px;
+      right: 15px;
+      background: @color-gray-darker;
+    }
     .logo {
       padding-right: 140px; font-size: 21px; line-height: 24px;
       &:before { width: 133px; height: 40px; }
     }
   }
 
-  @media @sm {
-    position: absolute;
-    left: 0;
-    bottom: 75px;
-    right: 0;
-    z-index: 70;
-    .logo { max-width: none; padding-right: 0; font-size: 36px; }
+  @media @mobile-lg {
+    .logo { font-size: 26px; line-height: 30px; }
   }
 
-  @media @md {
+  @media @tablet-sm {
+    .logo { font-size: 36px; line-height: 46px; }
+  }
+
+  @media @tablet-md {
+    margin-bottom: 0;
+    position: absolute;
+    left: 0;
     bottom: 120px;
+    right: 0;
+    z-index: 70;
+    &:before { display: none; }
     .logo {
+      max-width: none;
       padding-left: 20px;
       padding-right: 200px;
       font-size: 48px;
       line-height: 65px;
       letter-spacing: .025em;
       white-space: nowrap;
-      &:before {
-        width: 190px;
-        height: 60px;
-        top: 20px;
-        right: 18px;
-      }
+      &:before { width: 190px; height: 60px; top: 20px; right: 18px; }
     }
   }
 
-  @media @lg {
+  @media @desktop {
     .title {
       font-size: 55px;
     }
@@ -758,7 +768,7 @@ fieldset { padding: 0; border: 0; margin: 0; }
       .title {
         font-size: 13px;
         letter-spacing: -0.05em;
-        @media @xxs {
+        @media @mobile-sm {
           font-size: 14px;
           letter-spacing: 0;
           .h { display: inline; }
@@ -771,7 +781,7 @@ fieldset { padding: 0; border: 0; margin: 0; }
       }
     }
 
-    @media @xxs {
+    @media @mobile-sm {
       .inner { min-height: 220px; }
       .body-landscape & {
         li {
@@ -782,7 +792,7 @@ fieldset { padding: 0; border: 0; margin: 0; }
       }
     }
 
-    @media @xs {
+    @media @mobile-md {
       body:not(.body-landscape) & { max-width: 500px; margin: 0 auto; }
       .body-landscape & {
         .inner {
@@ -796,7 +806,7 @@ fieldset { padding: 0; border: 0; margin: 0; }
       }
     }
 
-    @media @sm {
+    @media @tablet-sm {
       font-size: 14px;
       li:before { height: 28px; }
       .inner:before { bottom: 44px; }
@@ -807,7 +817,7 @@ fieldset { padding: 0; border: 0; margin: 0; }
       }
     }
 
-    @media @md {
+    @media @tablet-md {
       body:not(.a) & {
         max-width: none;
         li {
@@ -835,7 +845,7 @@ fieldset { padding: 0; border: 0; margin: 0; }
       }
     }
 
-    @media @lg {
+    @media @desktop {
       body:not(.a) & {
         .inner { min-height: 460px; }
       }
@@ -867,21 +877,18 @@ fieldset { padding: 0; border: 0; margin: 0; }
   article, section { clear: both; }
 
   .scroll {
-    @media @xs {
+    @media @mobile-md {
       height: 344px;
       overflow-y: scroll;
     }
   }
 
-  @media @sm {
-    height: 460px;
+  @media @tablet-sm {
+    margin-right: 0;
     margin-left: 175px;
-    /*
-    overflow: hidden;
-    overflow-y: auto;
-    */
   }
-  @media @md {
+
+  @media @tablet-md {
     padding: 24px 46px;
     .pure-g { height: auto; overflow: visible; }
   }
@@ -919,7 +926,7 @@ fieldset { padding: 0; border: 0; margin: 0; }
   &:before { .rotate(-45deg); }
   &:after { .rotate(45deg); }
 
-  @media @xxs {
+  @media @mobile-sm {
     top: 10px;
     right: 6px;
   }
@@ -1038,7 +1045,7 @@ fieldset { padding: 0; border: 0; margin: 0; }
       font-weight: bold;
     }
   }
-  @media @xs {
+  @media @mobile-md {
     .item {
       .image {
         margin-right: 24px;
@@ -1108,7 +1115,7 @@ fieldset { padding: 0; border: 0; margin: 0; }
       }
     }
   }
-  @media @sm {
+  @media @tablet-sm {
     .item {
       .text {
         width: 40%;
@@ -1121,7 +1128,7 @@ fieldset { padding: 0; border: 0; margin: 0; }
       }
     }
   }
-  @media @md {
+  @media @tablet-md {
     margin-top: -50px;
     &.slick-initialized {
       padding-top: 0;
@@ -1139,7 +1146,7 @@ fieldset { padding: 0; border: 0; margin: 0; }
       }
     }
   }
-  @media @lg {
+  @media @desktop {
     .item {
       .text { width: 26%; }
       .picture { width: 70%; }
