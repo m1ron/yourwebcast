@@ -39,7 +39,9 @@ $(document).ready(function () {
 		$('.header').each(function () {
 			$('.logo', this).on('click', closePage);
 		});
-		$('.back').on('click', closePage);
+		$('.back').each(function () {
+			$(this).wrapInner('<span class="title"></span>').wrapInner('<span class="inner"></span>').on('click', closePage)
+		});
 		$('li', this).each(function () {
 			$('a', this).wrapInner('<span class="title"></span>').wrapInner('<span class="inner"></span>').on('click', function (e) {
 				_body.addClass('nav-hidden').addClass('nav-page-visible');

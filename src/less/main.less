@@ -20,9 +20,8 @@
 // ==========================================================================
 // _VARIABLES
 // ==========================================================================
-@min-width: 320px;
-@sm-width: 730px;
-@md-width: 999px;
+@sm-width: 320px;
+@md-width: 1000px;
 @lg-width: 1054px;
 
 @mobile-sm: ~"(min-width: 375px)";
@@ -162,7 +161,7 @@ html {
 }
 body {
   width: 100%;
-  min-width: @min-width;
+  min-width: @sm-width;
   height: 100%;
   min-height: 100%;
   margin: 0 auto;
@@ -410,7 +409,7 @@ fieldset { padding: 0; border: 0; margin: 0; }
 .footer {
   padding-top: @margin-s;
   padding-bottom: @margin-s;
-  margin-top: 25px;
+  margin-top: 30px;
   position: relative;
   z-index: 5;
   text-align: center;
@@ -423,8 +422,8 @@ fieldset { padding: 0; border: 0; margin: 0; }
     margin: 0 auto;
     position: absolute;
     top: 0;
-    left: 15px;
-    right: 15px;
+    left: 13px;
+    right: 13px;
     background: @color-gray-darker;
   }
 
@@ -565,8 +564,8 @@ fieldset { padding: 0; border: 0; margin: 0; }
       margin: 0 auto;
       position: absolute;
       bottom: 0;
-      left: 15px;
-      right: 15px;
+      left: 13px;
+      right: 13px;
       background: @color-gray-darker;
     }
     .logo {
@@ -657,7 +656,7 @@ fieldset { padding: 0; border: 0; margin: 0; }
       }
 
       &:before {
-        height: 20px;
+        height: 26px;
         margin-top: 3px;
         display: block;
         content: '';
@@ -859,6 +858,10 @@ fieldset { padding: 0; border: 0; margin: 0; }
   display: none;
   position: relative;
   .nav-page-visible &&-visible { display: block; }
+
+  @media @tablet-sm {
+    padding-left: 166px;
+  }
 }
 .content {
   padding: 15px;
@@ -884,11 +887,34 @@ fieldset { padding: 0; border: 0; margin: 0; }
   }
 
   @media @tablet-sm {
+    min-height: 340px;
     margin-right: 0;
-    margin-left: 175px;
+    margin-left: 0;
+    overflow: visible;
+    &:before, &:after {
+      height: 26px;
+      margin-top: 4px;
+      display: block;
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: -4px;
+      right: 16px;
+      background: url('@{images}/content.png') no-repeat 0 0;
+      background-size: auto 100%;
+      .animation-duration(@duration-animation);
+      .animation-fill-mode(both);
+    }
+    &:after {
+      width: 20px;
+      right: -4px;
+      left: auto;
+      background-position: 100% 0;
+    }
   }
 
   @media @tablet-md {
+    height: 400px;
     padding: 24px 46px;
     .pure-g { height: auto; overflow: visible; }
   }
@@ -931,64 +957,110 @@ fieldset { padding: 0; border: 0; margin: 0; }
     right: 6px;
   }
 
-  /*
-  width: 164px;
-  height: auto;
-  margin-bottom: 20px;
-  display: none;
-  background-position: 50% 0;
-  background-repeat: no-repeat;
-  background-size: cover;
-  border: 1px solid @color-white;
-  box-shadow: 0 0 0 2px @color-silver;
-  border-radius: 4px;
-  text-align: center;
-  color: @color-white;
-  font: 15px/normal @font-cinzel;
-  text-transform: uppercase;
-  text-decoration: none;
-  position: relative;
-  overflow: hidden;
-  transition: box-shadow @duration;
-
-  .bottom {
-    width: 100%;
-    height: 40px;
-    display: table;
-
-    span {
-      padding: 0 4px;
-      display: table-cell;
-      vertical-align: middle;
-      .color-white(.2);
-      background: @color-font;
-      box-shadow: inset 0 20px 0 0 @color;
-      transition: background @duration;
+  @media @tablet-sm {
+    width: 154px;
+    height: 340px;
+    position: absolute;
+    top: 0;
+    left: 4px;
+    text-indent: 0;
+    &:before {
+      width: auto;
+      height: 26px;
+      margin-top: 3px;
+      top: 100%;
+      left: -2px;
+      right: -2px;
+      bottom: auto;
+      background: url('@{images}/nav.png') no-repeat 50% 0;
+      background-size: 100% 100%;
+      .animation-duration(@duration-animation);
+      .animation-fill-mode(both);
+      .rotate(0deg);
     }
-  }
+    &:after { display: none; }
+    .inner {
+      height: 100%;
+      min-height: 200px;
+      border: 1px solid @color-white;
+      border-radius: 4px;
+      display: block;
+      overflow: hidden;
+      position: relative;
+      top: 0;
+      color: @color-white;
+      box-shadow: 0 0 0 2px @color-silver;
+      background: @color-white;
+      transition: box-shadow @duration-animation;
+      -webkit-backface-visibility: hidden;
+      .animation-duration(@duration-animation);
+      .animation-fill-mode(both);
 
-  &:hover {
-    box-shadow: 0 0 5px 2px @color-white;
-    span { background: @color-blue-dark; }
-  }
-  @media @sm {
-    height: 460px;
-    margin-bottom: 0;
-    float: left;
-    font-size: 20px;
-    .bottom {
-      height: 70px;
+      &:before {
+        .before;
+        border-radius: 4px 4px 0 0;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 40px;
+        left: 0;
+        background-repeat: no-repeat;
+        background-position: 0 0;
+        background-size: cover;
+        -webkit-backface-visibility: hidden;
+        .page-home & { background-image: url('@{images}/nav/home.jpg'); }
+      }
+    }
+    .title {
+      height: 44px;
+      padding: 14px 0 10px;
+      border-radius: 0 0 3px 3px;
+      display: block;
+      overflow: hidden;
+      font: 15px/20px @font-cinzel;
+      text-shadow: 1px 1px 1px rgba(0, 0, 0, .4);
+      text-align: center;
+      text-transform: uppercase;
+      white-space: nowrap;
       position: absolute;
       bottom: 0;
       left: 0;
       right: 0;
-      span {
-        .color-white(.2);
-        box-shadow: inset 0 40px 0 0 @color;
+      z-index: 5;
+      background: @color-font url('@{images}/button.png') repeat-x center center;
+      background-size: auto 100%;
+      .color-black(.2);
+      box-shadow: inset 0 1px 0 @color;
+      -webkit-backface-visibility: hidden;
+      .h { display: none; }
+
+      &:before {
+        .before;
+        border-radius: 0 0 4px 4px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        opacity: 0;
+        z-index: -1;
+        background: url('@{images}/button-hover.png') no-repeat 0 50%;
+        background-size: auto 100%;
+        transition: opacity @duration;
+        .color-black(.2);
+        box-shadow: inset 0 1px 1px @color;
+        -webkit-backface-visibility: hidden;
       }
     }
+    &:hover {
+      .inner { box-shadow: 0 0 5px 3px rgba(255, 255, 255, .75); }
+      .title:before { opacity: 1; }
+    }
   }
-  */
+
+  @media @tablet-md {
+    height: 400px;
+  }
 }
 /* ==========================================================================
    _NEWS-LIST
