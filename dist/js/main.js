@@ -68,6 +68,7 @@ function initScrolls() {
 	/** Scrolls init */
 	$('.scroll.fullheight:visible').each(function () {
 		var _this = $(this);
+		$('p:last:not(.last-child), .entry:last:not(.last-child)', _this).addClass('last-child');
 		if ($(window).width() >= 990) {
 			var _col = _this.closest('.col').height();
 			_this.siblings('*').each(function () {
@@ -81,6 +82,14 @@ function initScrolls() {
 			_this.height(_col);
 		} else {
 			_this.height('auto');
+		}
+		if (_this.hasClass('ps-container')) {
+			_this.perfectScrollbar('update');
+		} else {
+			_this.perfectScrollbar({
+				suppressScrollX: true
+			});
+			$("<div/>").addClass("shadow").insertAfter(_this);
 		}
 	});
 }

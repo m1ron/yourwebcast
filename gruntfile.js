@@ -50,6 +50,7 @@ module.exports = function (grunt) {
 							src.vendor + 'html5shiv/dist/html5shiv.min.js',
 							src.vendor + 'jquery/dist/jquery.min.js',
 							src.vendor + 'fastclick/lib/fastclick.js',
+							src.vendor + 'perfect-scrollbar/js/perfect-scrollbar.jquery.min.js',
 							src.vendor + 'slick-carousel/slick/slick.min.js'
 						],
 						dest: src.js + 'vendor'
@@ -58,6 +59,13 @@ module.exports = function (grunt) {
 						flatten: true,
 						src: [
 							src.vendor + 'normalize-css/normalize.css',
+						],
+						dest: src.css
+					}, {
+						expand: true,
+						flatten: true,
+						src: [
+							src.vendor + 'perfect-scrollbar/css/perfect-scrollbar.min.css',
 							src.vendor + 'slick-carousel/slick/slick.css'
 						],
 						dest: src.css + 'temp'
@@ -92,6 +100,7 @@ module.exports = function (grunt) {
 						src: [
 							src.js + 'custom.js',
 							src.js + 'vendor/fastclick.min.js',
+							src.js + 'vendor/perfect-scrollbar.jquery.min.js',
 							src.js + 'vendor/slick.min.js'
 						],
 						dest: src.js + 'plugins.js'

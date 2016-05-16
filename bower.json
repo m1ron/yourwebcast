@@ -21,6 +21,7 @@
     "fastclick": "~1.0.6",
     "jquery": "~2.1.4",
     "slick-carousel": "slick.js#^1.5.9",
-    "normalize-css": "normalize.css#^4.1.1"
+    "normalize-css": "normalize.css#^4.1.1",
+    "perfect-scrollbar": "^0.6.11"
   }
 }
