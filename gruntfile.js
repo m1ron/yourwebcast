@@ -57,8 +57,8 @@ module.exports = function (grunt) {
 						expand: true,
 						flatten: true,
 						src: [
-							src.vendor + 'slick-carousel/slick/slick.css',
-							src.vendor + 'animate.css/animate.min.css'
+							src.vendor + 'normalize-css/normalize.css',
+							src.vendor + 'slick-carousel/slick/slick.css'
 						],
 						dest: src.css + 'temp'
 					}
@@ -100,12 +100,6 @@ module.exports = function (grunt) {
 							src.css + 'vendor/*.min.css'
 						],
 						dest: src.css + 'plugins.css'
-					}, {
-						src: [
-							src.vendor + 'pure/pure-min.css',
-							src.vendor + 'pure/grids-responsive-min.css'
-						],
-						dest: src.css + 'pure.css'
 					}
 				]
 			}

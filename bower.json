@@ -20,8 +20,7 @@
     "html5shiv": "~3.7.3",
     "fastclick": "~1.0.6",
     "jquery": "~2.1.4",
-    "pure": "^0.6.0",
     "slick-carousel": "slick.js#^1.5.9",
-    "animate.css": "^3.5.1"
+    "normalize-css": "normalize.css#^4.1.1"
   }
 }
