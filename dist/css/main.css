@@ -220,7 +220,13 @@ body {
 }
 @media (min-width: 990px) {
   body {
+    min-height: 658px;
     background: #000 url('../img/background.jpg') repeat-x center 0;
+  }
+}
+@media (min-width: 1280px) {
+  body {
+    min-height: 716px;
   }
 }
 /* ==========================================================================

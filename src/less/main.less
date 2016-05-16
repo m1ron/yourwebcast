@@ -179,7 +179,11 @@ body {
   background: @color-black;
 
   @media @tablet-md {
+    min-height: 658px;
     background: @color-black url('@{images}/background.jpg') repeat-x center 0;
+  }
+  @media @desktop {
+    min-height: 716px;
   }
 }
 /* ==========================================================================
