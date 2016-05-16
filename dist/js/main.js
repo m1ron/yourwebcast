@@ -7,6 +7,7 @@
 $(document).ready(function () {
 
 	window._body = $('body');
+	window.fs = false;
 
 	/** Fastclick */
 	FastClick.attach(document.body);
@@ -61,6 +62,15 @@ $(document).ready(function () {
 		fade: true
 	});
 
+
+	$('.js-fullscreen').on('click', function (e) {
+		if (!fs) {
+			launchFullscreen(document.documentElement);
+		} else {
+			exitFullscreen();
+		}
+		e.preventDefault();
+	});
 });
 
 
@@ -92,4 +102,30 @@ function initScrolls() {
 			$("<div/>").addClass("shadow").insertAfter(_this);
 		}
 	});
+}
+
+
+function launchFullscreen(element) {
+	if (element.requestFullscreen) {
+		element.requestFullscreen();
+	} else if (element.mozRequestFullScreen) {
+		element.mozRequestFullScreen();
+	} else if (element.webkitRequestFullscreen) {
+		element.webkitRequestFullscreen();
+	} else if (element.msRequestFullscreen) {
+		element.msRequestFullscreen();
+	}
+	fs = true;
+}
+
+
+function exitFullscreen() {
+	if (document.exitFullscreen) {
+		document.exitFullscreen();
+	} else if (document.mozCancelFullScreen) {
+		document.mozCancelFullScreen();
+	} else if (document.webkitExitFullscreen) {
+		document.webkitExitFullscreen();
+	}
+	fs = false;
 }

@@ -534,7 +534,7 @@ input[type="button"]:before {
   left: 0;
   opacity: 0;
   z-index: -1;
-  background: url('../img/button-hover.png') no-repeat 0 50%;
+  background: #42484e url('../img/button-hover.png') no-repeat 0 50%;
   background-size: auto 100%;
   transition: opacity 0.4s ease;
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3);
@@ -551,7 +551,7 @@ input[type="button"]:hover:before {
   button,
   input[type="submit"],
   input[type="button"] {
-    padding: 7px 16px 6px;
+    padding: 7px 20px 6px;
     font-size: 15px;
   }
 }
@@ -1225,6 +1225,9 @@ input[type="button"]:hover:before {
 .content .scroll .ps-scrollbar-y-rail > .ps-scrollbar-y {
   width: 100%;
 }
+.content .scroll.ps-container.ps-active-y {
+  -webkit-overflow-scrolling: touch;
+}
 .content .scroll.ps-container.ps-active-y + .shadow {
   margin-top: -10px;
   height: 10px;
@@ -1248,7 +1251,6 @@ input[type="button"]:hover:before {
     overflow: hidden;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
-    overflow-scrolling: touch;
   }
 }
 @media (min-width: 750px) {
