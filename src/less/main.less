@@ -1330,8 +1330,8 @@ fieldset { padding: 0; border: 0; margin: 0; }
   border: 1px solid #8c8b8e;
   display: block;
   position: absolute;
-  top: 7px !important;
-  right: 7px !important;
+  top: 4px !important;
+  right: 4px !important;
   opacity: 1;
   cursor: pointer;
   background: #7f7a7b;
@@ -1353,15 +1353,17 @@ fieldset { padding: 0; border: 0; margin: 0; }
   &:before { .rotate(45deg); }
   &:after { .rotate(-45deg); }
   &:hover, &:focus {
-    &:before, &:after {
-      background: @color-white;
-    }
+    &:before, &:after { background: @color-white; }
+  }
+  @media @tablet-sm {
+    top: 7px !important;
+    right: 7px !important;
   }
 }
 .popup {
   border: 1px solid @color-gray-mid;
-  max-width: 640px;
-  min-height: 300px;
+  max-width: 400px;
+  min-height: 200px;
   margin: 0 auto;
   padding: 14px;
   background: @color-white;
@@ -1376,12 +1378,20 @@ fieldset { padding: 0; border: 0; margin: 0; }
     border-bottom: transparent;
     display: block;
     font-family: @font-poiret;
-    font-size: 20px;
-    line-height: 24px;
+    font-size: 18px;
+    line-height: 20px;
     text-transform: none;
     color: @color-white;
     background: @color-gray-mid;
     -webkit-font-smoothing: subpixel-antialiased;
     -moz-osx-font-smoothing: auto;
+  }
+
+  p.last-child { margin-bottom: 0; }
+
+  @media @tablet-sm {
+    max-width: 640px;
+    min-height: 240px;
+    .heading { font-size: 20px; line-height: 24px; }
   }
 }

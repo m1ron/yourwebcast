@@ -72,8 +72,8 @@ $(document).ready(function () {
 	});
 
 	/*** Ajax popup ***/
-	$('.js-popup').magnificPopup({
-	});
+	$('.js-popup').magnificPopup();
+	$('.popup p:last').addClass('last-child');
 });
 
 

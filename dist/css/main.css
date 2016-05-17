@@ -1775,8 +1775,8 @@ input[type="button"]:hover:before {
   border: 1px solid #8c8b8e;
   display: block;
   position: absolute;
-  top: 7px !important;
-  right: 7px !important;
+  top: 4px !important;
+  right: 4px !important;
   opacity: 1;
   cursor: pointer;
   background: #7f7a7b;
@@ -1813,10 +1813,16 @@ input[type="button"]:hover:before {
 .mfp-close:focus:after {
   background: #fff;
 }
+@media (min-width: 750px) {
+  .mfp-close {
+    top: 7px !important;
+    right: 7px !important;
+  }
+}
 .popup {
   border: 1px solid #72797f;
-  max-width: 640px;
-  min-height: 300px;
+  max-width: 400px;
+  min-height: 200px;
   margin: 0 auto;
   padding: 14px;
   background: #fff;
@@ -1831,11 +1837,24 @@ input[type="button"]:hover:before {
   border-bottom: transparent;
   display: block;
   font-family: 'Poiret One', sans-serif;
-  font-size: 20px;
-  line-height: 24px;
+  font-size: 18px;
+  line-height: 20px;
   text-transform: none;
   color: #fff;
   background: #72797f;
   -webkit-font-smoothing: subpixel-antialiased;
   -moz-osx-font-smoothing: auto;
+}
+.popup p.last-child {
+  margin-bottom: 0;
+}
+@media (min-width: 750px) {
+  .popup {
+    max-width: 640px;
+    min-height: 240px;
+  }
+  .popup .heading {
+    font-size: 20px;
+    line-height: 24px;
+  }
 }
