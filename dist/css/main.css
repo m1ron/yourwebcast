@@ -617,7 +617,7 @@ input[type="button"]:hover:before {
   margin-top: 14px;
   margin-bottom: 7px;
   font: 24px 'Freestyle Script', cursive;
-  color: #72797f;
+  color: #89929b;
 }
 .footer .copyright {
   margin: 7px 0;
@@ -1703,4 +1703,139 @@ input[type="button"]:hover:before {
   .gallery .item .picture {
     width: 70%;
   }
+}
+/* ==========================================================================
+   _POPUP
+   ========================================================================== */
+/* ====== Fade-zoom animation ====== */
+.mfp-zoom-in .mfp-content {
+  opacity: 0;
+  -webkit-transform: scale(0.8);
+  -moz-transform: scale(0.8);
+  -ms-transform: scale(0.8);
+  -o-transform: scale(0.8);
+  transform: scale(0.8);
+  -webkit-transition: -webkit-transform 0.4s ease, opacity 0.4s ease;
+  -moz-transition: -moz-transform 0.4s ease, opacity 0.4s ease;
+  -ms-transition: -ms-transform 0.4s ease, opacity 0.4s ease;
+  -o-transition: -o-transform 0.4s ease, opacity 0.4s ease;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  -webkit-transform-style: preserve-3d;
+  -webkit-backface-visibility: hidden;
+}
+.mfp-zoom-in.mfp-bg {
+  opacity: 0;
+  -webkit-transition: -webkit-transform 0.4s ease, opacity 0.4s ease;
+  -moz-transition: -moz-transform 0.4s ease, opacity 0.4s ease;
+  -ms-transition: -ms-transform 0.4s ease, opacity 0.4s ease;
+  -o-transition: -o-transform 0.4s ease, opacity 0.4s ease;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+.mfp-zoom-in.mfp-ready .mfp-content {
+  opacity: 1;
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  transform: scale(1);
+  -webkit-backface-visibility: hidden;
+}
+.mfp-zoom-in.mfp-ready.mfp-bg {
+  opacity: 0.8;
+}
+.mfp-zoom-in.mfp-removing .mfp-content {
+  opacity: 0;
+  -webkit-transform: scale(0.8);
+  -moz-transform: scale(0.8);
+  -ms-transform: scale(0.8);
+  -o-transform: scale(0.8);
+  transform: scale(0.8);
+  -webkit-backface-visibility: hidden;
+}
+.mfp-zoom-in.mfp-removing.mfp-bg {
+  opacity: 0;
+}
+.mfp-bg {
+  background: #000;
+}
+.mfp-bg.mfp-ready {
+  opacity: .95;
+}
+.mfp-container {
+  padding: 0 10px;
+}
+.mfp-arrow-right:before,
+.mfp-arrow-left:before {
+  border: none;
+}
+.mfp-close {
+  width: 20px !important;
+  height: 20px;
+  padding: 0 !important;
+  border: 1px solid #8c8b8e;
+  display: block;
+  position: absolute;
+  top: 7px !important;
+  right: 7px !important;
+  opacity: 1;
+  cursor: pointer;
+  background: #7f7a7b;
+}
+.mfp-close:before,
+.mfp-close:after {
+  width: 14px;
+  height: 2px;
+  margin: auto;
+  overflow: hidden;
+  display: block;
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: #a0a0a3;
+  transition: background-color 0.4s ease;
+}
+.mfp-close:before {
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  -webkit-backface-visibility: hidden;
+}
+.mfp-close:after {
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  -webkit-backface-visibility: hidden;
+}
+.mfp-close:hover:before,
+.mfp-close:focus:before,
+.mfp-close:hover:after,
+.mfp-close:focus:after {
+  background: #fff;
+}
+.popup {
+  border: 1px solid #72797f;
+  max-width: 640px;
+  min-height: 300px;
+  margin: 0 auto;
+  padding: 14px;
+  background: #fff;
+  position: relative;
+  z-index: 1;
+  background: #141414;
+  box-shadow: 0 0 10px #000;
+}
+.popup .heading {
+  padding: 5px 15px;
+  margin: -15px -15px 15px;
+  border-bottom: transparent;
+  display: block;
+  font-family: 'Poiret One', sans-serif;
+  font-size: 20px;
+  line-height: 24px;
+  text-transform: none;
+  color: #fff;
+  background: #72797f;
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: auto;
 }

@@ -62,23 +62,24 @@ $(document).ready(function () {
 		fade: true
 	});
 
+	/** Fullscreen trigger */
 	$('.js-fullscreen').each(function () {
 		if (document.fullscreenEnabled || document.mozFullScreenEnabled || document.webkitFullscreenEnabled) {
-			$(this).on('click', function (e) {
-				if (!_fullscreen) {
-					launchFullscreen();
-				} else {
-					exitFullscreen();
-				}
-				e.preventDefault();
-			});
+			$(this).on('click', toggleFullScreen);
 		} else {
 			$(this).closest('li').hide();
 		}
 	});
+
+	/*** Ajax popup ***/
+	$('.js-popup').magnificPopup({
+	});
 });
 
 
+/**
+ * Init scrolls on website resize
+ */
 function initScrolls() {
 	/** Scrolls init */
 	$('.scroll.fullheight:visible').each(function () {
@@ -110,27 +111,57 @@ function initScrolls() {
 }
 
 
-function launchFullscreen() {
-	if (document.documentElement.requestFullscreen) {
-		document.documentElement.requestFullscreen();
-	} else if (document.documentElement.mozRequestFullScreen) {
-		document.documentElement.mozRequestFullScreen();
-	} else if (document.documentElement.webkitRequestFullscreen) {
-		document.documentElement.webkitRequestFullscreen();
-	} else if (document.documentElement.msRequestFullscreen) {
-		document.documentElement.msRequestFullscreen();
+/**
+ * Toggle fullscreen mode
+ */
+function toggleFullScreen(e) {
+	/** Enter fullscreen **/
+	function enter() {
+		if (document.documentElement.requestFullscreen) {
+			document.documentElement.requestFullscreen();
+		} else if (document.documentElement.mozRequestFullScreen) {
+			document.documentElement.mozRequestFullScreen();
+		} else if (document.documentElement.webkitRequestFullscreen) {
+			document.documentElement.webkitRequestFullscreen();
+		} else if (document.documentElement.msRequestFullscreen) {
+			document.documentElement.msRequestFullscreen();
+		}
+		_fullscreen = true;
 	}
-	_fullscreen = true;
+
+	/** Exit fullscreen **/
+	function exit() {
+		if (document.exitFullscreen) {
+			document.exitFullscreen();
+		} else if (document.mozCancelFullScreen) {
+			document.mozCancelFullScreen();
+		} else if (document.webkitExitFullscreen) {
+			document.webkitExitFullscreen();
+		}
+		_fullscreen = false;
+	}
+
+	if (!_fullscreen) {
+		enter();
+	} else {
+		exit();
+	}
+	e.preventDefault();
 }
 
 
-function exitFullscreen() {
-	if (document.exitFullscreen) {
-		document.exitFullscreen();
-	} else if (document.mozCancelFullScreen) {
-		document.mozCancelFullScreen();
-	} else if (document.webkitExitFullscreen) {
-		document.webkitExitFullscreen();
-	}
-	_fullscreen = false;
-}
+/**
+ * Magnific Popup default settings
+ */
+$.extend(true, $.magnificPopup.defaults, {
+	tClose: 'Close (Esc)',
+	tLoading: '',
+	closeMarkup: '<span title="%title%" class="mfp-close"><span class="mfp-in"></span></span>',
+	ajax: {tError: '<a href="%url%">Content</a> not found'},
+	settings: {cache: false},
+	mainClass: 'mfp-zoom-in',
+	midClick: true,
+	removalDelay: 300,
+	autoFocusLast: false,
+	preload: false
+});
