@@ -198,7 +198,6 @@ body {
 
   @media @tablet-md {
     min-height: 658px;
-    background: @color-black url('@{images}/background.jpg') repeat-x center 0;
   }
   @media @desktop {
     min-height: 716px;
@@ -218,8 +217,10 @@ a {
   color: @color-font-light;
   outline: none;
   text-decoration: none;
-  transition: border-color @duration, color @duration;
   &:hover, &:focus { border-bottom-color: transparent; color: @color-white; outline: none; text-decoration: none; }
+  @media (min-width: 1025px) {
+    transition: border-color @duration, color @duration;
+  }
 }
 figure {
   margin-left: 0;
@@ -354,6 +355,15 @@ h6 {&:extend(.h6); }
     }
   }
   .body-landscape & { padding-top: 56px; }
+
+  @media @tablet-md {
+    background: url('@{images}/background.jpg') repeat-x 50% 25%;
+    background-size: auto 60%;
+  }
+  @media @desktop {
+    background-position: 50% 10%;
+    background-size: auto 70%;
+  }
 }
 /* ==========================================================================
    _FORMS
@@ -366,6 +376,7 @@ fieldset { padding: 0; border: 0; margin: 0; }
   border: none;
   border-radius: 4px;
   display: inline-block;
+  vertical-align: middle;
   overflow: hidden;
   position: relative;
   font: 14px/20px @font-cinzel;
@@ -435,7 +446,7 @@ fieldset { padding: 0; border: 0; margin: 0; }
   p:last-child { margin-bottom: 0; }
 
   .company {
-    margin-top: @margin-s;
+    margin-top: @margin-xs;
     margin-bottom: @margin-xs;
     font: 24px @font-freestyle;
     color: @color-gray-medium;
@@ -455,11 +466,12 @@ fieldset { padding: 0; border: 0; margin: 0; }
     .unselectable;
 
     li {
-      margin: 0 9px;
+      margin: 0;
       display: inline-block;
       vertical-align: middle;
 
       a {
+        padding: 10px;
         border: none;
         display: block;
         position: relative;
@@ -506,7 +518,7 @@ fieldset { padding: 0; border: 0; margin: 0; }
     text-align: left;
     .copyright { margin-top: 0; margin-bottom: 0; position: absolute; top: 44px; left: 30px; }
     .company { margin-top: 0; margin-bottom: 0; font-size: 24px; position: absolute; top: 14px; left: 30px; }
-    .actions { position: absolute; right: 30px; top: 30px; }
+    .actions { position: absolute; right: 30px; bottom: 30px; }
   }
   @media @tablet-md {
     height: 113px;
@@ -515,7 +527,7 @@ fieldset { padding: 0; border: 0; margin: 0; }
     &:before { left: 15px; right: 15px; }
     .copyright { top: 64px; left: 38px; }
     .company { top: 16px; left: 38px; font-size: 30px; line-height: 36px; }
-    .actions { right: 26px; top: 66px; }
+    .actions { right: 20px; }
   }
 }
 /* ==========================================================================
@@ -536,7 +548,7 @@ fieldset { padding: 0; border: 0; margin: 0; }
     position: relative;
     z-index: 1;
     font: 22px/24px @font-poiret;
-    color: @color-font;
+    color: @color-white;
     text-shadow: 0 0 1px @color-font;
     -webkit-font-smoothing: subpixel-antialiased;
     -moz-osx-font-smoothing: auto;
@@ -608,7 +620,7 @@ fieldset { padding: 0; border: 0; margin: 0; }
   }
 
   @media @desktop {
-    .title {
+    .logo {
       font-size: 55px;
     }
   }
@@ -894,7 +906,7 @@ fieldset { padding: 0; border: 0; margin: 0; }
   .scroll {
     padding-right: 10px;
     margin-right: -10px;
-    p:last-child, p.last-child { margin-bottom: 0; }
+    p:last-child, p.last-child { margin-bottom: @margin-xs; }
     .ps-scrollbar-y-rail {
       width: 6px !important;
       right: 1px !important;
@@ -905,15 +917,14 @@ fieldset { padding: 0; border: 0; margin: 0; }
     &.ps-container.ps-active-y {
       -webkit-overflow-scrolling: touch;
       + .shadow {
-        margin-top: -10px;
-        height: 10px;
+        margin-top: -12px;
+        height: 12px;
         display: block;
         position: absolute;
         left: 10px;
-        right: 20px;
+        right: 10px;
         bottom: 0;
         z-index: 100;
-        opacity: .5;
         .gradient-y(rgba(20, 20, 20, 0), rgba(20, 20, 20, 1));
       }
     }
@@ -954,7 +965,7 @@ fieldset { padding: 0; border: 0; margin: 0; }
 
   @media @tablet-md {
     height: 400px;
-    padding: 24px 44px;
+    padding: 24px 34px 20px 44px;
     margin-right: 4px;
 
     .col {
@@ -964,18 +975,35 @@ fieldset { padding: 0; border: 0; margin: 0; }
       float: left;
       position: relative;
       clear: none;
-      &:nth-child(1) { width: 510px; }
-      &:nth-child(2) { width: 200px; float: right; margin-left: 0; margin-right: -10px; }
+      &:nth-child(2) { float: right; margin-left: 0; margin-right: -10px; }
       > *:first-child, > *:first-child > *:first-child { margin-top: 0; }
     }
   }
 
   @media @desktop {
     height: 460px;
-    padding: 24px 46px;
     margin-right: 2px;
-    .col {
-      &:nth-child(2) { width: 260px; }
+  }
+
+  & {
+    @media @tablet-md {
+      .col:nth-child(1) { width: 500px; }
+      .col:nth-child(2) { width: 220px; }
+    }
+    @media @desktop {
+      .col:nth-child(1) { width: 520px; }
+      .col:nth-child(2) { width: 260px; }
+    }
+  }
+
+  .page-about & {
+    @media @tablet-md {
+      .col:nth-child(1) { width: 320px; }
+      .col:nth-child(2) { width: 410px; }
+    }
+    @media @desktop {
+      .col:nth-child(1) { width: 340px; }
+      .col:nth-child(2) { width: 430px; }
     }
   }
 }
@@ -1070,6 +1098,7 @@ fieldset { padding: 0; border: 0; margin: 0; }
         background-size: cover;
         -webkit-backface-visibility: hidden;
         .page-home & { background-image: url('@{images}/nav/home.jpg'); }
+        .page-about & { background-image: url('@{images}/nav/about.jpg'); }
       }
     }
     .title {
@@ -1155,14 +1184,14 @@ fieldset { padding: 0; border: 0; margin: 0; }
     }
 
     &:last-child, &.last-child {
-      &, p:last-child { margin-bottom: 0; }
+      & { margin-bottom: @margin-xs; }
+      p:last-child { margin-bottom: 0; }
     }
   }
 }
 /* ==========================================================================
    _ARTICLE
    ========================================================================== */
-#about { display: block; }
 .article {
   &:after { .clearfix; }
   .title {
@@ -1300,6 +1329,53 @@ fieldset { padding: 0; border: 0; margin: 0; }
   }
 }
 /* ==========================================================================
+   _COMPANY_HISTORY
+   ========================================================================== */
+.company-history {
+  .more { margin-top: 0; }
+  .push-left + p {
+    max-height: 62px;
+    margin-bottom: 7px;
+    overflow: hidden;
+    text-overflow-ellipsis: ellipsis;
+
+    @media @mobile-md {
+      max-height: 54px;
+      margin-bottom: 13px;
+    }
+    @media @tablet-sm {
+      margin-bottom: 11px;
+    }
+  }
+}
+/* ==========================================================================
+   _TESTIMONIALS
+   ========================================================================== */
+.testimonials {
+  .entry {
+    max-width: 380px;
+    padding: 0;
+    margin: 0 auto @margin-s;
+    display: block;
+    clear: none;
+    &:after { .clearfix; }
+
+    blockquote { padding: 0; margin: 0; display: block; }
+    p { margin: 0; }
+    footer { margin-top: @margin-xs; display: block; font-size: 12px; text-align: right; }
+    cite:before { margin-right: 4px; content: '\2013'; }
+    &.last-child { margin-bottom: @margin-xs; }
+
+    @media @mobile-md {
+      width: 50%;
+      padding: 0 15px;
+      float: left;
+      &:nth-child(2n + 1) { padding-left: 0; clear: left; }
+      &:nth-child(2n) { float: right; padding-right: 0; }
+    }
+  }
+}
+/* ==========================================================================
    _POPUP
    ========================================================================== */
 /* ====== Fade-zoom animation ====== */
@@ -1335,6 +1411,8 @@ fieldset { padding: 0; border: 0; margin: 0; }
   opacity: 1;
   cursor: pointer;
   background: #7f7a7b;
+  transition: border-color @duration;
+
   &:before, &:after {
     width: 14px;
     height: 2px;
@@ -1352,9 +1430,12 @@ fieldset { padding: 0; border: 0; margin: 0; }
   }
   &:before { .rotate(45deg); }
   &:after { .rotate(-45deg); }
-  &:hover, &:focus {
+
+  &:hover {
+    border-color: @color-white;
     &:before, &:after { background: @color-white; }
   }
+
   @media @tablet-sm {
     top: 7px !important;
     right: 7px !important;
@@ -1390,7 +1471,7 @@ fieldset { padding: 0; border: 0; margin: 0; }
   p.last-child { margin-bottom: 0; }
 
   @media @tablet-sm {
-    max-width: 640px;
+    max-width: 560px;
     min-height: 240px;
     .heading { font-size: 20px; line-height: 24px; }
   }

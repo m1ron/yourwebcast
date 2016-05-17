@@ -221,7 +221,6 @@ body {
 @media (min-width: 990px) {
   body {
     min-height: 658px;
-    background: #000 url('../img/background.jpg') repeat-x center 0;
   }
 }
 @media (min-width: 1280px) {
@@ -251,7 +250,6 @@ a {
   color: #c2c8cd;
   outline: none;
   text-decoration: none;
-  transition: border-color 0.4s ease, color 0.4s ease;
 }
 a:hover,
 a:focus {
@@ -259,6 +257,11 @@ a:focus {
   color: #fff;
   outline: none;
   text-decoration: none;
+}
+@media (min-width: 1025px) {
+  a {
+    transition: border-color 0.4s ease, color 0.4s ease;
+  }
 }
 figure {
   margin-left: 0;
@@ -493,6 +496,18 @@ h6 {
 .body-landscape .layout {
   padding-top: 56px;
 }
+@media (min-width: 990px) {
+  .layout {
+    background: url('../img/background.jpg') repeat-x 50% 25%;
+    background-size: auto 60%;
+  }
+}
+@media (min-width: 1280px) {
+  .layout {
+    background-position: 50% 10%;
+    background-size: auto 70%;
+  }
+}
 /* ==========================================================================
    _FORMS
    ========================================================================== */
@@ -511,6 +526,7 @@ input[type="button"] {
   border: none;
   border-radius: 4px;
   display: inline-block;
+  vertical-align: middle;
   overflow: hidden;
   position: relative;
   font: 14px/20px 'Cinzel', serif;
@@ -614,7 +630,7 @@ input[type="button"]:hover:before {
   margin-bottom: 0;
 }
 .footer .company {
-  margin-top: 14px;
+  margin-top: 7px;
   margin-bottom: 7px;
   font: 24px 'Freestyle Script', cursive;
   color: #89929b;
@@ -637,11 +653,12 @@ input[type="button"]:hover:before {
   user-select: none;
 }
 .footer .actions li {
-  margin: 0 9px;
+  margin: 0;
   display: inline-block;
   vertical-align: middle;
 }
 .footer .actions li a {
+  padding: 10px;
   border: none;
   display: block;
   position: relative;
@@ -704,7 +721,7 @@ input[type="button"]:hover:before {
   .footer .actions {
     position: absolute;
     right: 30px;
-    top: 30px;
+    bottom: 30px;
   }
 }
 @media (min-width: 990px) {
@@ -728,8 +745,7 @@ input[type="button"]:hover:before {
     line-height: 36px;
   }
   .footer .actions {
-    right: 26px;
-    top: 66px;
+    right: 20px;
   }
 }
 /* ==========================================================================
@@ -765,7 +781,7 @@ input[type="button"]:hover:before {
   position: relative;
   z-index: 1;
   font: 22px/24px 'Poiret One', sans-serif;
-  color: #a5aeb6;
+  color: #fff;
   text-shadow: 0 0 1px #a5aeb6;
   -webkit-font-smoothing: subpixel-antialiased;
   -moz-osx-font-smoothing: auto;
@@ -856,7 +872,7 @@ input[type="button"]:hover:before {
   }
 }
 @media (min-width: 1280px) {
-  .header .title {
+  .header .logo {
     font-size: 55px;
   }
 }
@@ -1220,7 +1236,7 @@ input[type="button"]:hover:before {
 }
 .content .scroll p:last-child,
 .content .scroll p.last-child {
-  margin-bottom: 0;
+  margin-bottom: 7px;
 }
 .content .scroll .ps-scrollbar-y-rail {
   width: 6px !important;
@@ -1235,15 +1251,14 @@ input[type="button"]:hover:before {
   -webkit-overflow-scrolling: touch;
 }
 .content .scroll.ps-container.ps-active-y + .shadow {
-  margin-top: -10px;
-  height: 10px;
+  margin-top: -12px;
+  height: 12px;
   display: block;
   position: absolute;
   left: 10px;
-  right: 20px;
+  right: 10px;
   bottom: 0;
   z-index: 100;
-  opacity: .5;
   background-color: rgba(20, 20, 20, 0);
   background: -webkit-linear-gradient(top, rgba(20, 20, 20, 0), #141414);
   background: -moz-linear-gradient(top, rgba(20, 20, 20, 0), #141414);
@@ -1293,7 +1308,7 @@ input[type="button"]:hover:before {
 @media (min-width: 990px) {
   .content {
     height: 400px;
-    padding: 24px 44px;
+    padding: 24px 34px 20px 44px;
     margin-right: 4px;
   }
   .content .col {
@@ -1304,11 +1319,7 @@ input[type="button"]:hover:before {
     position: relative;
     clear: none;
   }
-  .content .col:nth-child(1) {
-    width: 510px;
-  }
   .content .col:nth-child(2) {
-    width: 200px;
     float: right;
     margin-left: 0;
     margin-right: -10px;
@@ -1321,11 +1332,39 @@ input[type="button"]:hover:before {
 @media (min-width: 1280px) {
   .content {
     height: 460px;
-    padding: 24px 46px;
     margin-right: 2px;
+  }
+}
+@media (min-width: 990px) {
+  .content .col:nth-child(1) {
+    width: 500px;
+  }
+  .content .col:nth-child(2) {
+    width: 220px;
+  }
+}
+@media (min-width: 1280px) {
+  .content .col:nth-child(1) {
+    width: 520px;
   }
   .content .col:nth-child(2) {
     width: 260px;
+  }
+}
+@media (min-width: 990px) {
+  .page-about .content .col:nth-child(1) {
+    width: 320px;
+  }
+  .page-about .content .col:nth-child(2) {
+    width: 410px;
+  }
+}
+@media (min-width: 1280px) {
+  .page-about .content .col:nth-child(1) {
+    width: 340px;
+  }
+  .page-about .content .col:nth-child(2) {
+    width: 430px;
   }
 }
 /* ==========================================================================
@@ -1448,6 +1487,9 @@ input[type="button"]:hover:before {
   .page-home .back .inner:before {
     background-image: url('../img/nav/home.jpg');
   }
+  .page-about .back .inner:before {
+    background-image: url('../img/nav/about.jpg');
+  }
   .back .title {
     height: 44px;
     padding: 14px 0 10px;
@@ -1534,7 +1576,9 @@ input[type="button"]:hover:before {
   margin-top: 0;
 }
 .news .entry:last-child,
-.news .entry.last-child,
+.news .entry.last-child {
+  margin-bottom: 7px;
+}
 .news .entry:last-child p:last-child,
 .news .entry.last-child p:last-child {
   margin-bottom: 0;
@@ -1542,9 +1586,6 @@ input[type="button"]:hover:before {
 /* ==========================================================================
    _ARTICLE
    ========================================================================== */
-#about {
-  display: block;
-}
 .article:after {
   display: table;
   content: '\0020';
@@ -1705,6 +1746,80 @@ input[type="button"]:hover:before {
   }
 }
 /* ==========================================================================
+   _COMPANY_HISTORY
+   ========================================================================== */
+.company-history .more {
+  margin-top: 0;
+}
+.company-history .push-left + p {
+  max-height: 62px;
+  margin-bottom: 7px;
+  overflow: hidden;
+  text-overflow-ellipsis: ellipsis;
+}
+@media (min-width: 568px) {
+  .company-history .push-left + p {
+    max-height: 54px;
+    margin-bottom: 13px;
+  }
+}
+@media (min-width: 750px) {
+  .company-history .push-left + p {
+    margin-bottom: 11px;
+  }
+}
+/* ==========================================================================
+   _TESTIMONIALS
+   ========================================================================== */
+.testimonials .entry {
+  max-width: 380px;
+  padding: 0;
+  margin: 0 auto 14px;
+  display: block;
+  clear: none;
+}
+.testimonials .entry:after {
+  display: table;
+  content: '\0020';
+  clear: both;
+}
+.testimonials .entry blockquote {
+  padding: 0;
+  margin: 0;
+  display: block;
+}
+.testimonials .entry p {
+  margin: 0;
+}
+.testimonials .entry footer {
+  margin-top: 7px;
+  display: block;
+  font-size: 12px;
+  text-align: right;
+}
+.testimonials .entry cite:before {
+  margin-right: 4px;
+  content: '\2013';
+}
+.testimonials .entry.last-child {
+  margin-bottom: 7px;
+}
+@media (min-width: 568px) {
+  .testimonials .entry {
+    width: 50%;
+    padding: 0 15px;
+    float: left;
+  }
+  .testimonials .entry:nth-child(2n + 1) {
+    padding-left: 0;
+    clear: left;
+  }
+  .testimonials .entry:nth-child(2n) {
+    float: right;
+    padding-right: 0;
+  }
+}
+/* ==========================================================================
    _POPUP
    ========================================================================== */
 /* ====== Fade-zoom animation ====== */
@@ -1780,6 +1895,7 @@ input[type="button"]:hover:before {
   opacity: 1;
   cursor: pointer;
   background: #7f7a7b;
+  transition: border-color 0.4s ease;
 }
 .mfp-close:before,
 .mfp-close:after {
@@ -1807,10 +1923,11 @@ input[type="button"]:hover:before {
   transform: rotate(-45deg);
   -webkit-backface-visibility: hidden;
 }
+.mfp-close:hover {
+  border-color: #fff;
+}
 .mfp-close:hover:before,
-.mfp-close:focus:before,
-.mfp-close:hover:after,
-.mfp-close:focus:after {
+.mfp-close:hover:after {
   background: #fff;
 }
 @media (min-width: 750px) {
@@ -1850,7 +1967,7 @@ input[type="button"]:hover:before {
 }
 @media (min-width: 750px) {
   .popup {
-    max-width: 640px;
+    max-width: 560px;
     min-height: 240px;
   }
   .popup .heading {

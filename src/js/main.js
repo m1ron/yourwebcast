@@ -10,7 +10,7 @@ $(document).ready(function () {
 	window._fullscreen = false;
 
 	/** Fastclick */
-	FastClick.attach(document.body);
+	//FastClick.attach(document.body);
 
 	/** Layout */
 	_body.wrapInner('<div class="spacer"></div>').wrapInner('<div class="layout-in"></div>').wrapInner('<div class="layout"></div>');
@@ -72,7 +72,7 @@ $(document).ready(function () {
 	});
 
 	/*** Ajax popup ***/
-	$('.js-popup').magnificPopup();
+	$('.js-popup').magnificPopup({});
 	$('.popup p:last').addClass('last-child');
 });
 
