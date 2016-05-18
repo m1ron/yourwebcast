@@ -73,6 +73,9 @@ $(document).ready(function () {
 
 	/*** Ajax popup ***/
 	$('.js-popup').magnificPopup({});
+	$('.js-ajax').magnificPopup({
+		type: 'ajax'
+	});
 	$('.popup p:last').addClass('last-child');
 });
 
@@ -163,5 +166,16 @@ $.extend(true, $.magnificPopup.defaults, {
 	midClick: true,
 	removalDelay: 300,
 	autoFocusLast: false,
-	preload: false
+	preload: true,
+	overflowY: true,
+	fixedContentPos: true,
+	fixedBgPos: true,
+	callbacks: {
+		open: function () {
+			$(this.container).perfectScrollbar({suppressScrollX: true});
+		},
+		close: function () {
+			$(this.container).perfectScrollbar('destroy');
+		}
+	}
 });

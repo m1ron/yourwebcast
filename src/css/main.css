@@ -369,7 +369,6 @@ h5 {
   margin-bottom: 3px;
   font-size: inherit;
   font-weight: bold;
-  text-transform: uppercase;
 }
 .h6,
 h6 {
@@ -377,7 +376,6 @@ h6 {
   margin-bottom: 3px;
   font-size: .9em;
   font-weight: bold;
-  text-transform: uppercase;
 }
 @media (min-width: 750px) {
   .h1,
@@ -1376,18 +1374,18 @@ input[type="button"].button-order {
 }
 @media (min-width: 990px) {
   .page-about .content .col:nth-child(1) {
-    width: 320px;
+    width: 360px;
   }
   .page-about .content .col:nth-child(2) {
-    width: 410px;
+    width: 370px;
   }
 }
 @media (min-width: 1280px) {
   .page-about .content .col:nth-child(1) {
-    width: 340px;
+    width: 360px;
   }
   .page-about .content .col:nth-child(2) {
-    width: 430px;
+    width: 420px;
   }
 }
 @media (min-width: 990px) {
@@ -1404,6 +1402,22 @@ input[type="button"].button-order {
   }
   .page-order .content .col:nth-child(2) {
     width: 310px;
+  }
+}
+@media (min-width: 990px) {
+  .page-contact .content .col:nth-child(1) {
+    width: 360px;
+  }
+  .page-contact .content .col:nth-child(2) {
+    width: 370px;
+  }
+}
+@media (min-width: 1280px) {
+  .page-contact .content .col:nth-child(1) {
+    width: 380px;
+  }
+  .page-contact .content .col:nth-child(2) {
+    width: 390px;
   }
 }
 /* ==========================================================================
@@ -1799,6 +1813,20 @@ input[type="button"].button-order {
 /* ==========================================================================
    _COMPANY_HISTORY
    ========================================================================== */
+.about p:first-child {
+  margin-top: 0;
+}
+@media (min-width: 568px) {
+  .about {
+    font-size: 13px;
+    line-height: normal;
+  }
+}
+.company-history:after {
+  display: table;
+  content: '\0020';
+  clear: both;
+}
 .company-history .more {
   margin-top: 0;
 }
@@ -1822,6 +1850,9 @@ input[type="button"].button-order {
 /* ==========================================================================
    _TESTIMONIALS
    ========================================================================== */
+.testimonials {
+  margin-top: 14px;
+}
 .testimonials .entry {
   max-width: 380px;
   padding: 0;
@@ -1889,6 +1920,10 @@ input[type="button"].button-order {
   margin-bottom: 0;
 }
 @media (min-width: 990px) {
+  .services {
+    font-size: 13px;
+    line-height: normal;
+  }
   .services .entry:not(.last-child) {
     margin-bottom: 20px;
   }
@@ -1929,6 +1964,14 @@ input[type="button"].button-order {
   display: block;
   font-size: 11px;
   line-height: normal;
+}
+/* ==========================================================================
+   _ADDRESS
+   ========================================================================== */
+.address:after {
+  display: table;
+  content: '\0020';
+  clear: both;
 }
 /* ==========================================================================
    _POPUP
@@ -1988,7 +2031,10 @@ input[type="button"].button-order {
   opacity: .95;
 }
 .mfp-container {
-  padding: 0 10px;
+  padding: 0 15px;
+}
+.mfp-content {
+  padding: 30px 0;
 }
 .mfp-arrow-right:before,
 .mfp-arrow-left:before {

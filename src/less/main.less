@@ -280,7 +280,6 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: @margin-xxs;
   font-size: inherit;
   font-weight: bold;
-  text-transform: uppercase;
 }
 .h6 {
   &:extend(.h-default);
@@ -288,7 +287,6 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: @margin-xxs;
   font-size: .9em;
   font-weight: bold;
-  text-transform: uppercase;
 }
 @media @tablet-sm {
   .h1 { font-size: 40px; }
@@ -1003,12 +1001,12 @@ fieldset { padding: 0; border: 0; margin: 0; }
 
   .page-about & {
     @media @tablet-md {
-      .col:nth-child(1) { width: 320px; }
-      .col:nth-child(2) { width: 410px; }
+      .col:nth-child(1) { width: 360px; }
+      .col:nth-child(2) { width: 370px; }
     }
     @media @desktop {
-      .col:nth-child(1) { width: 340px; }
-      .col:nth-child(2) { width: 430px; }
+      .col:nth-child(1) { width: 360px; }
+      .col:nth-child(2) { width: 420px; }
     }
   }
 
@@ -1020,6 +1018,17 @@ fieldset { padding: 0; border: 0; margin: 0; }
     @media @desktop {
       .col:nth-child(1) { width: 470px; }
       .col:nth-child(2) { width: 310px; }
+    }
+  }
+
+  .page-contact & {
+    @media @tablet-md {
+      .col:nth-child(1) { width: 360px; }
+      .col:nth-child(2) { width: 370px; }
+    }
+    @media @desktop {
+      .col:nth-child(1) { width: 380px; }
+      .col:nth-child(2) { width: 390px; }
     }
   }
 }
@@ -1349,7 +1358,15 @@ fieldset { padding: 0; border: 0; margin: 0; }
 /* ==========================================================================
    _COMPANY_HISTORY
    ========================================================================== */
+.about {
+  p:first-child { margin-top: 0; }
+  @media @mobile-md {
+    font-size: 13px;
+    line-height: normal;
+  }
+}
 .company-history {
+  &:after { .clearfix; }
   .more { margin-top: 0; }
   .push-left + p {
     max-height: 62px;
@@ -1370,6 +1387,7 @@ fieldset { padding: 0; border: 0; margin: 0; }
    _TESTIMONIALS
    ========================================================================== */
 .testimonials {
+  margin-top: @margin-s;
   .entry {
     max-width: 380px;
     padding: 0;
@@ -1408,6 +1426,8 @@ fieldset { padding: 0; border: 0; margin: 0; }
   figure { margin-bottom: 0; }
 
   @media @tablet-md {
+    font-size: 13px;
+    line-height: normal;
     .entry:not(.last-child) { margin-bottom: 20px; }
     figure img { width: 120px; height: auto; }
   }
@@ -1441,6 +1461,12 @@ fieldset { padding: 0; border: 0; margin: 0; }
   }
 }
 /* ==========================================================================
+   _ADDRESS
+   ========================================================================== */
+.address {
+  &:after { .clearfix; }
+}
+/* ==========================================================================
    _POPUP
    ========================================================================== */
 /* ====== Fade-zoom animation ====== */
@@ -1461,7 +1487,10 @@ fieldset { padding: 0; border: 0; margin: 0; }
   &.mfp-ready { opacity: .95; }
 }
 .mfp-container {
-  padding: 0 10px;
+  padding: 0 15px;
+}
+.mfp-content {
+  padding: 30px 0;
 }
 .mfp-arrow-right:before, .mfp-arrow-left:before { border: none; }
 .mfp-close {
