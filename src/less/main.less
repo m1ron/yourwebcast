@@ -37,6 +37,7 @@
 @font-freestyle: 'Freestyle Script', cursive;
 
 @color-white: #fff;
+@color-lightest: #efeff0;
 @color-font: #a5aeb6;
 @color-font-light: #c2c8cd;
 @color-gray-medium: #89929b;
@@ -55,7 +56,7 @@
 @margin-xs: 7px;
 @margin-s: 14px;
 @margin-m: 21px;
-@margin-b: 28px;
+@margin-l: 28px;
 
 @images: '../img';
 // ==========================================================================
@@ -213,8 +214,8 @@ p, ul, ol, dl {
 ul, ol { padding-left: @margin-m; }
 :focus { outline: -webkit-focus-ring-color auto 0; }
 a {
-  border-bottom: 1px solid @color-font-light;
-  color: @color-font-light;
+  border-bottom: 1px solid @color-white;
+  color: @color-white;
   outline: none;
   text-decoration: none;
   &:hover, &:focus { border-bottom-color: transparent; color: @color-white; outline: none; text-decoration: none; }
@@ -388,6 +389,7 @@ fieldset { padding: 0; border: 0; margin: 0; }
   background: @color-font url('@{images}/button.png') repeat-x center center;
   background-size: auto 100%;
   z-index: 2;
+  cursor: pointer;
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.4);
   -webkit-backface-visibility: hidden;
 
@@ -407,7 +409,7 @@ fieldset { padding: 0; border: 0; margin: 0; }
     box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3);
     -webkit-backface-visibility: hidden;
   }
-  &:hover:before { opacity: 1; }
+  &:hover:before, &:focus:before { opacity: 1; }
 
   &.button-order { padding-top: 8px; padding-bottom: 8px; }
 
@@ -419,7 +421,36 @@ fieldset { padding: 0; border: 0; margin: 0; }
   @media @tablet-md {
     padding: 7px 21px;
     font-size: 16px;
-    &.button-order { padding: 10px 25px 9px; font-size: 20px; line-height: normal; }
+    &.button-order { padding: 10px 25px 9px; font-size: 19px; line-height: normal; }
+  }
+}
+/* INPUTS */
+input[type='text'], input[type='tel'], input[type='email'], textarea {
+  padding: 4px;
+  border: 1px solid @color-lightest;
+  border-radius: 1px;
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 12px;
+  color: @color-lightest;
+  background: @color-black;
+  transition: border-color @duration;
+  &:focus { border-color: @color-white; }
+  .form & { width: 100%; display: block; }
+}
+textarea {
+  height: 80px;
+  resize: none;
+}
+::-webkit-input-placeholder { color: @color-lightest; opacity: 1; }
+:-moz-placeholder { color: @color-lightest; opacity: 1; }
+::-moz-placeholder { color: @color-lightest; opacity: 1; }
+:-ms-input-placeholder { color: @color-lightest; opacity: 1; }
+/* FORM */
+.form {
+  .line {
+    &:not(:last-child) { margin-bottom: 6px; }
+    &:after { .clearfix; }
   }
 }
 /* ==========================================================================
@@ -669,7 +700,7 @@ fieldset { padding: 0; border: 0; margin: 0; }
         border: none;
         display: block;
         text-decoration: none;
-        &:hover {
+        &:hover, &:focus {
           .inner { box-shadow: 0 0 5px 3px rgba(255, 255, 255, .75); /*.animation-name (nav-bounce-hover);*/ }
           .title:before { opacity: 1; }
         }
@@ -691,7 +722,7 @@ fieldset { padding: 0; border: 0; margin: 0; }
         .animation-fill-mode(both);
       }
 
-      &:hover {
+      &:hover, &:focus {
         //&:before { .animation-name (shadow-bounce-hover); }
       }
 
@@ -844,8 +875,8 @@ fieldset { padding: 0; border: 0; margin: 0; }
           &:nth-child(1):before, &:nth-child(2):before, &:nth-child(3):before { display: block; }
           &:nth-child(n+1) { margin-bottom: 0; }
           &:before { .animation-name (shadow-bounce-blur); }
-          &:hover:before { .animation-name (shadow-bounce-hover); }
-          a:hover {
+          &:hover:before, &:focus:before { .animation-name (shadow-bounce-hover); }
+          a:hover, a:focus {
             .inner { .animation-name (nav-bounce-hover); }
           }
         }
@@ -1023,11 +1054,11 @@ fieldset { padding: 0; border: 0; margin: 0; }
 
   .page-contact & {
     @media @tablet-md {
-      .col:nth-child(1) { width: 360px; }
+      .col:nth-child(1) { width: 340px; }
       .col:nth-child(2) { width: 370px; }
     }
     @media @desktop {
-      .col:nth-child(1) { width: 380px; }
+      .col:nth-child(1) { width: 360px; }
       .col:nth-child(2) { width: 390px; }
     }
   }
@@ -1171,7 +1202,7 @@ fieldset { padding: 0; border: 0; margin: 0; }
         -webkit-backface-visibility: hidden;
       }
     }
-    &:hover {
+    &:hover, &:focus {
       .inner { box-shadow: 0 0 5px 3px rgba(255, 255, 255, .75); }
       .title:before { opacity: 1; }
     }
@@ -1440,6 +1471,7 @@ fieldset { padding: 0; border: 0; margin: 0; }
    _PHONE-ORDER
    ========================================================================== */
 .phone-order {
+  margin-top: @margin-m;
   .heading {
     margin-top: @margin-s !important;
     margin-bottom: @margin-xs;
@@ -1450,6 +1482,7 @@ fieldset { padding: 0; border: 0; margin: 0; }
     display: inline-block;
     white-space: nowrap;
     font: 26px @font-cinzel;
+    cursor: default;
     @media @desktop {
       font-size: 32px;
     }
@@ -1459,12 +1492,55 @@ fieldset { padding: 0; border: 0; margin: 0; }
     font-size: 11px;
     line-height: normal;
   }
+  @media @desktop {
+    margin-top: @margin-l;
+  }
+}
+/* ==========================================================================
+   _FORM_CONTACT
+   ========================================================================== */
+.form-contact {
+  max-width: 400px;
+  textarea { height: 100px; }
+  .line:last-child { margin-top: 10px; }
+  [type='submit'] { float: left; }
+  [type='reset'] { float: right; }
+  @media @tablet-sm {
+    textarea { height: 140px; }
+  }
+  @media @tablet-md {
+    max-width: none;
+  }
+  @media @desktop {
+    textarea { height: 190px; }
+  }
 }
 /* ==========================================================================
    _ADDRESS
    ========================================================================== */
 .address {
   &:after { .clearfix; }
+  strong { color: @color-white; }
+  .tel {
+    border-bottom-color: transparent;
+    color: inherit;
+    cursor: default;
+    &:hover, &:focus { color: @color-white; }
+  }
+  @media @tablet-md {
+    line-height: 15px;
+  }
+}
+/* ==========================================================================
+   _LET_US_KNOW
+   ========================================================================== */
+.let-us-know {
+  ol li { margin-bottom: 3px; }
+  strong { color: @color-white; text-transform: uppercase; }
+  &:after { .clearfix; }
+  @media @desktop {
+    ol li { margin-bottom: @margin-xs; }
+  }
 }
 /* ==========================================================================
    _POPUP
