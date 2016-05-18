@@ -178,7 +178,7 @@ html {
   padding: 0;
   margin: 0;
   font: 13px @font-default;
-  color: @color-font;
+  color: @color-font-light;
   background: @color-black;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -372,7 +372,7 @@ fieldset { padding: 0; border: 0; margin: 0; }
 /* BUTTONS */
 .button, button, input[type="submit"], input[type="button"] {
   height: auto;
-  padding: 6px 16px 5px;
+  padding: 6px 16px;
   border: none;
   border-radius: 4px;
   display: inline-block;
@@ -384,6 +384,7 @@ fieldset { padding: 0; border: 0; margin: 0; }
   color: @color-white;
   text-align: center;
   text-decoration: none;
+  text-transform: uppercase;
   .color-black(.4);
   text-shadow: 1px 1px 1px @color;
   background: @color-font url('@{images}/button.png') repeat-x center center;
@@ -410,13 +411,17 @@ fieldset { padding: 0; border: 0; margin: 0; }
   }
   &:hover:before { opacity: 1; }
 
+  &.button-order { padding-top: 8px; padding-bottom: 8px; }
+
   @media @tablet-sm {
-    padding: 7px 20px 6px;
-    font-size: 15px;
+    padding: 5px 15px;
+    font-size: 14px;
+    &.button-order { padding-top: 7px; padding-bottom: 7px; }
   }
   @media @tablet-md {
-    font-size: 19px;
-    line-height: 22px;
+    padding: 7px 21px;
+    font-size: 16px;
+    &.button-order { padding: 10px 25px 9px; font-size: 20px; line-height: normal; }
   }
 }
 /* ==========================================================================
@@ -697,7 +702,7 @@ fieldset { padding: 0; border: 0; margin: 0; }
 
       &:nth-child(1) .inner:before { background-image: url('@{images}/nav/home.jpg'); }
       &:nth-child(2) .inner:before { background-image: url('@{images}/nav/about.jpg'); }
-      &:nth-child(3) .inner:before { background-image: url('@{images}/nav/orders.jpg'); }
+      &:nth-child(3) .inner:before { background-image: url('@{images}/nav/order.jpg'); }
       &:nth-child(4) .inner:before { background-image: url('@{images}/nav/gallery.jpg'); }
       &:nth-child(5) .inner:before { background-image: url('@{images}/nav/video.jpg'); }
       &:nth-child(6) .inner:before { background-image: url('@{images}/nav/contact.jpg'); }
@@ -1006,6 +1011,17 @@ fieldset { padding: 0; border: 0; margin: 0; }
       .col:nth-child(2) { width: 430px; }
     }
   }
+
+  .page-order & {
+    @media @tablet-md {
+      .col:nth-child(1) { width: 450px; }
+      .col:nth-child(2) { width: 270px; }
+    }
+    @media @desktop {
+      .col:nth-child(1) { width: 470px; }
+      .col:nth-child(2) { width: 310px; }
+    }
+  }
 }
 /* ==========================================================================
  _BACK
@@ -1099,6 +1115,10 @@ fieldset { padding: 0; border: 0; margin: 0; }
         -webkit-backface-visibility: hidden;
         .page-home & { background-image: url('@{images}/nav/home.jpg'); }
         .page-about & { background-image: url('@{images}/nav/about.jpg'); }
+        .page-order & { background-image: url('@{images}/nav/order.jpg'); }
+        .page-gallery & { background-image: url('@{images}/nav/gallery.jpg'); }
+        .page-video & { background-image: url('@{images}/nav/video.jpg'); }
+        .page-contact & { background-image: url('@{images}/nav/contact.jpg'); }
       }
     }
     .title {
@@ -1166,10 +1186,9 @@ fieldset { padding: 0; border: 0; margin: 0; }
   }
 }
 /* ==========================================================================
-   _NEWS-LIST
+   _NEWS
    ========================================================================== */
 .news {
-
   .entry {
     margin-bottom: @margin-s;
 
@@ -1204,7 +1223,6 @@ fieldset { padding: 0; border: 0; margin: 0; }
    _CATALOG
    ========================================================================== */
 .catalog {
-
   .item {
     margin-bottom: 18px;
     &:after { .clearfix; }
@@ -1340,11 +1358,11 @@ fieldset { padding: 0; border: 0; margin: 0; }
     text-overflow-ellipsis: ellipsis;
 
     @media @mobile-md {
-      max-height: 54px;
+      max-height: 56px;
       margin-bottom: 13px;
     }
     @media @tablet-sm {
-      margin-bottom: 11px;
+      margin-bottom: 9px;
     }
   }
 }
@@ -1376,12 +1394,59 @@ fieldset { padding: 0; border: 0; margin: 0; }
   }
 }
 /* ==========================================================================
+   _SERVICES
+   ========================================================================== */
+.services {
+  .entry {
+    &:not(.last-child) { margin-bottom: 25px; }
+    &:after { .clearfix; }
+  }
+  .heading {
+    margin-top: 0;
+    margin-bottom: 3px;
+  }
+  figure { margin-bottom: 0; }
+
+  @media @tablet-md {
+    .entry:not(.last-child) { margin-bottom: 20px; }
+    figure img { width: 120px; height: auto; }
+  }
+  @media @desktop {
+    .entry:not(.last-child) { margin-bottom: 25px; }
+    figure img { width: 140px; height: 100px; }
+  }
+}
+/* ==========================================================================
+   _PHONE-ORDER
+   ========================================================================== */
+.phone-order {
+  .heading {
+    margin-top: @margin-s !important;
+    margin-bottom: @margin-xs;
+  }
+  .tel {
+    border: none;
+    margin: 0 0 -3px;
+    display: inline-block;
+    white-space: nowrap;
+    font: 26px @font-cinzel;
+    @media @desktop {
+      font-size: 32px;
+    }
+  }
+  .note {
+    display: block;
+    font-size: 11px;
+    line-height: normal;
+  }
+}
+/* ==========================================================================
    _POPUP
    ========================================================================== */
 /* ====== Fade-zoom animation ====== */
 .mfp-zoom-in {
-  .mfp-content { opacity: 0; .scale(.8); .transition-translate-opacity(@duration); -webkit-transform-style: preserve-3d; -webkit-backface-visibility: hidden; }
-  &.mfp-bg { opacity: 0; .transition-translate-opacity(@duration); }
+  .mfp-content { opacity: 0; .scale(.8); .transition-translate-opacity(.3s ease); -webkit-transform-style: preserve-3d; -webkit-backface-visibility: hidden; }
+  &.mfp-bg { opacity: 0; .transition-translate-opacity(.3s ease); }
   &.mfp-ready {
     .mfp-content { opacity: 1; .scale(1); }
     &.mfp-bg { opacity: 0.8; }

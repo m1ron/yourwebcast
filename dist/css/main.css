@@ -198,7 +198,7 @@ html {
   padding: 0;
   margin: 0;
   font: 13px Helvetica, Arial, sans-serif;
-  color: #a5aeb6;
+  color: #c2c8cd;
   background: #000;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -522,7 +522,7 @@ button,
 input[type="submit"],
 input[type="button"] {
   height: auto;
-  padding: 6px 16px 5px;
+  padding: 6px 16px;
   border: none;
   border-radius: 4px;
   display: inline-block;
@@ -534,6 +534,7 @@ input[type="button"] {
   color: #fff;
   text-align: center;
   text-decoration: none;
+  text-transform: uppercase;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
   background: #a5aeb6 url('../img/button.png') repeat-x center center;
   background-size: auto 100%;
@@ -568,13 +569,27 @@ input[type="submit"]:hover:before,
 input[type="button"]:hover:before {
   opacity: 1;
 }
+.button.button-order,
+button.button-order,
+input[type="submit"].button-order,
+input[type="button"].button-order {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
 @media (min-width: 750px) {
   .button,
   button,
   input[type="submit"],
   input[type="button"] {
-    padding: 7px 20px 6px;
-    font-size: 15px;
+    padding: 5px 15px;
+    font-size: 14px;
+  }
+  .button.button-order,
+  button.button-order,
+  input[type="submit"].button-order,
+  input[type="button"].button-order {
+    padding-top: 7px;
+    padding-bottom: 7px;
   }
 }
 @media (min-width: 990px) {
@@ -582,8 +597,16 @@ input[type="button"]:hover:before {
   button,
   input[type="submit"],
   input[type="button"] {
-    font-size: 19px;
-    line-height: 22px;
+    padding: 7px 21px;
+    font-size: 16px;
+  }
+  .button.button-order,
+  button.button-order,
+  input[type="submit"].button-order,
+  input[type="button"].button-order {
+    padding: 10px 25px 9px;
+    font-size: 20px;
+    line-height: normal;
   }
 }
 /* ==========================================================================
@@ -966,7 +989,7 @@ input[type="button"]:hover:before {
   background-image: url('../img/nav/about.jpg');
 }
 .nav ul li:nth-child(3) .inner:before {
-  background-image: url('../img/nav/orders.jpg');
+  background-image: url('../img/nav/order.jpg');
 }
 .nav ul li:nth-child(4) .inner:before {
   background-image: url('../img/nav/gallery.jpg');
@@ -1367,6 +1390,22 @@ input[type="button"]:hover:before {
     width: 430px;
   }
 }
+@media (min-width: 990px) {
+  .page-order .content .col:nth-child(1) {
+    width: 450px;
+  }
+  .page-order .content .col:nth-child(2) {
+    width: 270px;
+  }
+}
+@media (min-width: 1280px) {
+  .page-order .content .col:nth-child(1) {
+    width: 470px;
+  }
+  .page-order .content .col:nth-child(2) {
+    width: 310px;
+  }
+}
 /* ==========================================================================
  _BACK
  ========================================================================== */
@@ -1490,6 +1529,18 @@ input[type="button"]:hover:before {
   .page-about .back .inner:before {
     background-image: url('../img/nav/about.jpg');
   }
+  .page-order .back .inner:before {
+    background-image: url('../img/nav/order.jpg');
+  }
+  .page-gallery .back .inner:before {
+    background-image: url('../img/nav/gallery.jpg');
+  }
+  .page-video .back .inner:before {
+    background-image: url('../img/nav/video.jpg');
+  }
+  .page-contact .back .inner:before {
+    background-image: url('../img/nav/contact.jpg');
+  }
   .back .title {
     height: 44px;
     padding: 14px 0 10px;
@@ -1559,7 +1610,7 @@ input[type="button"]:hover:before {
   }
 }
 /* ==========================================================================
-   _NEWS-LIST
+   _NEWS
    ========================================================================== */
 .news .entry {
   margin-bottom: 14px;
@@ -1759,13 +1810,13 @@ input[type="button"]:hover:before {
 }
 @media (min-width: 568px) {
   .company-history .push-left + p {
-    max-height: 54px;
+    max-height: 56px;
     margin-bottom: 13px;
   }
 }
 @media (min-width: 750px) {
   .company-history .push-left + p {
-    margin-bottom: 11px;
+    margin-bottom: 9px;
   }
 }
 /* ==========================================================================
@@ -1820,6 +1871,66 @@ input[type="button"]:hover:before {
   }
 }
 /* ==========================================================================
+   _SERVICES
+   ========================================================================== */
+.services .entry:not(.last-child) {
+  margin-bottom: 25px;
+}
+.services .entry:after {
+  display: table;
+  content: '\0020';
+  clear: both;
+}
+.services .heading {
+  margin-top: 0;
+  margin-bottom: 3px;
+}
+.services figure {
+  margin-bottom: 0;
+}
+@media (min-width: 990px) {
+  .services .entry:not(.last-child) {
+    margin-bottom: 20px;
+  }
+  .services figure img {
+    width: 120px;
+    height: auto;
+  }
+}
+@media (min-width: 1280px) {
+  .services .entry:not(.last-child) {
+    margin-bottom: 25px;
+  }
+  .services figure img {
+    width: 140px;
+    height: 100px;
+  }
+}
+/* ==========================================================================
+   _PHONE-ORDER
+   ========================================================================== */
+.phone-order .heading {
+  margin-top: 14px !important;
+  margin-bottom: 7px;
+}
+.phone-order .tel {
+  border: none;
+  margin: 0 0 -3px;
+  display: inline-block;
+  white-space: nowrap;
+  font: 26px 'Cinzel', serif;
+}
+@media (min-width: 1280px) {
+  .phone-order .tel {
+    font-size: 32px;
+  }
+}
+.phone-order .note {
+  display: block;
+  font-size: 11px;
+  line-height: normal;
+}
+/* ==========================================================================
    _POPUP
    ========================================================================== */
 /* ====== Fade-zoom animation ====== */
@@ -1830,21 +1941,21 @@ input[type="button"]:hover:before {
   -ms-transform: scale(0.8);
   -o-transform: scale(0.8);
   transform: scale(0.8);
-  -webkit-transition: -webkit-transform 0.4s ease, opacity 0.4s ease;
-  -moz-transition: -moz-transform 0.4s ease, opacity 0.4s ease;
-  -ms-transition: -ms-transform 0.4s ease, opacity 0.4s ease;
-  -o-transition: -o-transform 0.4s ease, opacity 0.4s ease;
-  transition: transform 0.4s ease, opacity 0.4s ease;
+  -webkit-transition: -webkit-transform 0.3s ease, opacity 0.3s ease;
+  -moz-transition: -moz-transform 0.3s ease, opacity 0.3s ease;
+  -ms-transition: -ms-transform 0.3s ease, opacity 0.3s ease;
+  -o-transition: -o-transform 0.3s ease, opacity 0.3s ease;
+  transition: transform 0.3s ease, opacity 0.3s ease;
   -webkit-transform-style: preserve-3d;
   -webkit-backface-visibility: hidden;
 }
 .mfp-zoom-in.mfp-bg {
   opacity: 0;
-  -webkit-transition: -webkit-transform 0.4s ease, opacity 0.4s ease;
-  -moz-transition: -moz-transform 0.4s ease, opacity 0.4s ease;
-  -ms-transition: -ms-transform 0.4s ease, opacity 0.4s ease;
-  -o-transition: -o-transform 0.4s ease, opacity 0.4s ease;
-  transition: transform 0.4s ease, opacity 0.4s ease;
+  -webkit-transition: -webkit-transform 0.3s ease, opacity 0.3s ease;
+  -moz-transition: -moz-transform 0.3s ease, opacity 0.3s ease;
+  -ms-transition: -ms-transform 0.3s ease, opacity 0.3s ease;
+  -o-transition: -o-transform 0.3s ease, opacity 0.3s ease;
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 .mfp-zoom-in.mfp-ready .mfp-content {
   opacity: 1;
