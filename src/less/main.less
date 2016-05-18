@@ -530,10 +530,8 @@ textarea {
         }
 
         img {
-          width: 19px;
-          height: 15px;
           display: block;
-          opacity: .53;
+          opacity: .5;
           transition: opacity @duration;
         }
 
@@ -541,6 +539,16 @@ textarea {
           &:before { opacity: 1; }
           img { opacity: 1; }
         }
+      }
+
+      span {
+        width: 25px;
+        height: 15px;
+        overflow: hidden;
+        display: block;
+        position: relative;
+        top: 1px;
+        img { margin-left: -4px; }
       }
     }
   }
@@ -1483,9 +1491,6 @@ textarea {
     white-space: nowrap;
     font: 26px @font-cinzel;
     cursor: default;
-    @media @desktop {
-      font-size: 32px;
-    }
   }
   .note {
     display: block;
@@ -1494,6 +1499,7 @@ textarea {
   }
   @media @desktop {
     margin-top: @margin-l;
+    .tel { font-size: 28px; }
   }
 }
 /* ==========================================================================

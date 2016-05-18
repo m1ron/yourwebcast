@@ -71,12 +71,33 @@ $(document).ready(function () {
 		}
 	});
 
-	/*** Ajax popup ***/
+
+	/** Audio */
+	$('.js-sound').each(function () {
+		var audio = $($(this).attr('href'))[0];
+		audio.volume = .5;
+		audio.play();
+		$(this).on('click', function () {
+			if ($(this).hasClass('active')) {
+				$(this).removeClass('active');
+				audio.volume = 0.5;
+			} else {
+				$(this).addClass('active');
+				audio.volume = 0;
+			}
+			e.preventDefault();
+		});
+	});
+
+
+	/** Popup */
 	$('.js-popup').magnificPopup({});
+	$('.popup p:last').addClass('last-child');
+
+	/** AJAX Popup */
 	$('.js-ajax').magnificPopup({
 		type: 'ajax'
 	});
-	$('.popup p:last').addClass('last-child');
 });
 
 

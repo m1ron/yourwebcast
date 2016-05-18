@@ -767,10 +767,8 @@ textarea {
   z-index: -1;
 }
 .footer .actions li a img {
-  width: 19px;
-  height: 15px;
   display: block;
-  opacity: .53;
+  opacity: .5;
   transition: opacity 0.4s ease;
 }
 .footer .actions li a:hover:before {
@@ -778,6 +776,17 @@ textarea {
 }
 .footer .actions li a:hover img {
   opacity: 1;
+}
+.footer .actions li span {
+  width: 25px;
+  height: 15px;
+  overflow: hidden;
+  display: block;
+  position: relative;
+  top: 1px;
+}
+.footer .actions li span img {
+  margin-left: -4px;
 }
 @media (min-width: 568px) {
   .footer {
@@ -2027,11 +2036,6 @@ textarea {
   font: 26px 'Cinzel', serif;
   cursor: default;
 }
-@media (min-width: 1280px) {
-  .phone-order .tel {
-    font-size: 32px;
-  }
-}
 .phone-order .note {
   display: block;
   font-size: 11px;
@@ -2040,6 +2044,9 @@ textarea {
 @media (min-width: 1280px) {
   .phone-order {
     margin-top: 28px;
+  }
+  .phone-order .tel {
+    font-size: 28px;
   }
 }
 /* ==========================================================================
